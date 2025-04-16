@@ -1,0 +1,100 @@
+// Before Debugging
+
+#include <stdio.h>
+#include <limits.h>
+
+void process(int *arr, int size, int *evenSum, int *oddSum) {
+    *evenSum = *oddSum = 0;
+    int maxEven = -1, maxEvenIndex = -1;
+    int minOdd = INT_MAX, minOddIndex = -1;
+
+    for (int i = 0; i <= size; i++) {
+        if (arr[i] % 2 == 0) {
+            *evenSum += arr[i];
+            if (arr[i] > maxEven) {
+                maxEven = arr[i];
+                maxEvenIndex = i;
+            }
+        } else {
+            *oddSum += arr[i];
+            if (arr[i] < minOdd) {
+                minOdd = arr[i];
+                minOddIndex = i;
+            }
+        }
+    }
+
+    // Swap logic
+    if (maxEvenIndex && minOddIndex) {
+        int temp = arr[maxEvenIndex];
+        arr[maxEvenIndex] = arr[minOddIndex];
+        arr[minOddIndex] = temp;
+    }
+}
+
+int main() {
+    int arr[] = {3, 10, 7, 4, 11, 6, 13};
+    int evenSum, oddSum;
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    process(arr, size, &evenSum, &oddSum);
+
+    printf("Sum of Even: %d\n", evenSum);
+    printf("Sum of Odd: %d\n", oddSum);
+    printf("Modified Array:\n");
+    for (int i = 0; i < size; ++i)
+        printf("%d ", arr[i]);
+    printf("\n");
+
+    return 0;
+}
+
+// After Debugging
+#include <stdio.h>
+#include <limits.h>
+
+void process(int *arr, int size, int *evenSum, int *oddSum) {
+    *evenSum = *oddSum = 0;
+    int maxEven = -1, maxEvenIndex = -1;
+    int minOdd = INT_MAX, minOddIndex = -1;
+
+    for (int i = 0; i < size; i++) {
+        if (arr[i] % 2 == 0) {
+            *evenSum += arr[i];
+            if (arr[i] > maxEven) {
+                maxEven = arr[i];
+                maxEvenIndex = i;
+            }
+        } else {
+            *oddSum += arr[i];
+            if (arr[i] < minOdd) {
+                minOdd = arr[i];
+                minOddIndex = i;
+            }
+        }
+    }
+
+    // Swap logic
+    if (maxEvenIndex !=-1 && minOddIndex != -1) {
+        int temp = arr[maxEvenIndex];
+        arr[maxEvenIndex] = arr[minOddIndex];
+        arr[minOddIndex] = temp;
+    }
+}
+
+int main() {
+    int arr[] = {3, 10, 7, 4, 11, 6, 13};
+    int evenSum, oddSum;
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    process(arr, size, &evenSum, &oddSum);
+
+    printf("Sum of Even: %d\n", evenSum);
+    printf("Sum of Odd: %d\n", oddSum);
+    printf("Modified Array:\n");
+    for (int i = 0; i < size; ++i)
+        printf("%d ", arr[i]);
+    printf("\n");
+
+    return 0;
+}
