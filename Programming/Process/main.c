@@ -3,7 +3,7 @@
 
 int main() {
 while (1) {
-printf("akash_r\n");
+printf("akash\n");
 sleep(0);
 }
 return 0;
