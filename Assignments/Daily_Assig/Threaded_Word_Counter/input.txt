@@ -1,0 +1,3 @@
+this is input file 
+for threaded 
+word counter
