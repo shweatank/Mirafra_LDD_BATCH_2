@@ -1,37 +1,47 @@
 #include<stdio.h>
-#include<stdlib.h>
-int add(int a,int b)
+#include<sys/shm.h>
+#include<sys/ipc.h>
+#include<sys/wait.h>
+#include<sys/types.h>
+#include<unistd.h>
+int factorial(int n)
 {
-    return a+b;
-}
-int sub(int a,int b)
-{
-    return a-b;
-}
-int mul(int a,int b)
-{
-    return a*b;
-}
-int main(){
-    int(*fp[3])(int,int)={add,sub,mul};
-    int a,b;
-    char ch;
-     printf("enter any symbol between '+' or '-' or '*'\n");
-    scanf("%c",&ch);
-    printf("enter a nd b:");
-    scanf("%d %d",&a,&b);
-   
-    switch(ch)
+    int res=1;
+    for(int i=1;i<=n;i++)
     {
-        case '+':
-                    printf("%d",fp[0](a,b));
-                    break;
-        case '-':
-                    printf("%d",fp[1](a,b));
-                    break;
-        case '*':
-                    printf("%d",fp[2](a,b));
-                    break;
-        default:printf("invalid");
+        res*=i;
     }
+    return res;
+}
+int main()
+{
+    int a[]={3,4,5,6};
+    int n=sizeof(a)/sizeof(a[0]);
+    key_t key=IPC_PRIVATE;
+    pid_t pid;
+   int shmid=shmget(key,1024,IPC_CREAT|0666);
+    int *shmptr=(int *)shmat(shmid,NULL,0);
+    
+    for(int i=0;i<n;i++)
+    {
+        pid=fork();
+        if(pid<0)
+        {
+            printf("error:");
+        }
+        else
+        {
+        shmptr[i]=factorial(a[i]);
+        shmdt(shmptr);
+        }
+    }
+    for(int i=0;i<n;i++)
+     wait(NULL);
+     
+    for(int i=0;i<n;i++)
+    {
+        printf("%d=%d",a[i],shmptr[i]);
+    }
+    shmdt(shmptr);
+    shmctl(shmid,IPC_RMID,NULL);
 }
