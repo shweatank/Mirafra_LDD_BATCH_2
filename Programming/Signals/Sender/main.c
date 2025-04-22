@@ -8,7 +8,7 @@ int main(){
     printf("enter pid to send SIGUSR1: ");
     scanf("%d",&pid);
 
-    kill(pid,SIGQUIT);
+    kill(pid,SIGUSR1);
     printf("sent SIGUSR1 to PID %d\n", pid);
 
     return 0;
