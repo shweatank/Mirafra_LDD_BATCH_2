@@ -37,7 +37,7 @@ struct Node* head = newNode(1);
 head->next = newNode(2);
 head->next->next = newNode(3);
 head->next->next->next = newNode(4);
-printf("before: ");
+printf("before ");
 printList(head);
 head = reverseList(head);
 printf("after: ");

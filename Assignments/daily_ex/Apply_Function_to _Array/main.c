@@ -23,12 +23,12 @@ int main() {
     printf("original array: ");
     printArray(arr, n);
 
-    printf("doubled: ");
+    printf("doubled ");
     transformArray(arr, n, doubleNum);
     printArray(arr, n);
 
     int arr2[] = {1, 2, 3, 4};
-    printf("squared: ");
+    printf("squared ");
     transformArray(arr2, n, squareNum);
     printArray(arr2, n);
 

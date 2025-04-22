@@ -37,7 +37,7 @@ int main() {
     head->next->next = newNode(3);
     head->next->next->next = newNode(4);
 
-    printf("list: ");
+    printf("list ");
     printList(head);
 
     struct Node* middle = findMiddle(head);
