@@ -32,3 +32,4 @@ void *print_message_function(void *ptr)
     printf("%s\n", message);
     pthread_exit(NULL);
 }
+
