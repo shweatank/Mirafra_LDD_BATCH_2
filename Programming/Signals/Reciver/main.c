@@ -8,7 +8,7 @@ void handle_sigusrl(int sig){
 }
 
 int main(){
-    signal(SIGUSR1,handle_sigusrl);
+    signal(SIGQUIT,handle_sigusrl);
     printf("Receiver PID %d\n",getpid());
 
 
