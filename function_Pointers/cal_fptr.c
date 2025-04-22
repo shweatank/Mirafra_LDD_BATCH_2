@@ -1,43 +1,66 @@
 #include <stdio.h>
 
-
-int add(int a, int b) 
+void add(int a,int b,int opt)
 {
-    return a + b;
-}
-int sub(int a, int b) 
-{
-    return a - b;
-}
-int mul(int a, int b) 
-{
-    return a * b;
-}
-int divide(int a, int b) 
-{
-    if (b != 0)
-        return a / b;
-    else {
-        printf("Division by zero error!\n");
-        return 0;
-    }
-}
-
-int main() {
-    int a = 20, b = 10;
-
-    
-    int (*op[4])(int, int) = {add, sub, mul, divide};
-
-    
-    char *ops[] = {"Addition", "Subtraction", "Multiplication", "Division"};
-
   
-    for (int i = 0; i < 4; ++i) 
-    {
-        printf("%s of %d and %d = %d\n", ops[i], a, b, op[i](a, b));
-    }
-
-    return 0;
+  if(opt == 0)
+  {
+      printf("Sum = %d\n",a+b);
+  }
 }
 
+void sub(int a,int b,int opt)
+{
+  
+  if(opt ==1)
+  {
+    printf("Sub = %d\n",a-b);
+  }
+
+}
+
+void Mul(int a,int b,int opt)
+{
+  
+  if(opt == 2)
+  {
+    printf("Mul = %d\n",a*b);
+  }
+}
+
+void Div(int a,int b,int opt)
+{
+  
+  if(opt == 3)
+  {
+    printf("Div = %d\n",a/b);
+  }
+}
+
+int main()
+{
+  int num1,num2,choice;
+  printf("Enter a, b values:");
+  scanf("%d %d",&num1,&num2);
+
+  printf("Enter choice :");
+  scanf("%d",&choice);
+
+  void (*fp[4])(int,int,int) = {add,sub,Mul,Div};
+
+  if(choice<=3 || choice>=0)
+  {
+    fp[choice](num1,num2,choice);
+
+  }
+
+
+
+
+
+
+
+
+
+
+}
