@@ -1,0 +1,1 @@
+cmd_/home/mirafra/Documents/DeviceDriver/sample_driver.ko := ld -r  -m elf_x86_64 -z noexecstack   --build-id=sha1  -T scripts/module.lds -o /home/mirafra/Documents/DeviceDriver/sample_driver.ko /home/mirafra/Documents/DeviceDriver/sample_driver.o /home/mirafra/Documents/DeviceDriver/sample_driver.mod.o;  true
