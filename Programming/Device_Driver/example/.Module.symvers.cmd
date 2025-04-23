@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Documents/Akash/Mirafra_LDD_BATCH_2/Programming/Device_Driver/example/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/Documents/Akash/Mirafra_LDD_BATCH_2/Programming/Device_Driver/example/Module.symvers -T /home/mirafra/Documents/Akash/Mirafra_LDD_BATCH_2/Programming/Device_Driver/example/modules.order -i Module.symvers -e 
