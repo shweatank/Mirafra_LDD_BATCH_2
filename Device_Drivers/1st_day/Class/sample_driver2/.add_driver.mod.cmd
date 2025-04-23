@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/vishnu/Ldd_training/Device_Drivers/1st_day/Class/sample_driver2/add_driver.mod := printf '%s\n'   add_driver.o | awk '!x[$$0]++ { print("/home/mirafra/vishnu/Ldd_training/Device_Drivers/1st_day/Class/sample_driver2/"$$0) }' > /home/mirafra/vishnu/Ldd_training/Device_Drivers/1st_day/Class/sample_driver2/add_driver.mod
