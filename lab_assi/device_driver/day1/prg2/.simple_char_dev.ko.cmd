@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/day1/prg2/simple_char_dev.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/lab_assi/device_driver/day1/prg2/simple_char_dev.ko /home/mirafra/lab_assi/device_driver/day1/prg2/simple_char_dev.o /home/mirafra/lab_assi/device_driver/day1/prg2/simple_char_dev.mod.o

@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/day2/prog1/modules.order := {   echo /home/mirafra/lab_assi/device_driver/day2/prog1/print_cal.o; :; } > /home/mirafra/lab_assi/device_driver/day2/prog1/modules.order

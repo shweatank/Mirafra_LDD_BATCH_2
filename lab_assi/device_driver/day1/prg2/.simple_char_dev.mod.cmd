@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/day1/prg2/simple_char_dev.mod := printf '%s\n'   simple_char_dev.o | awk '!x[$$0]++ { print("/home/mirafra/lab_assi/device_driver/day1/prg2/"$$0) }' > /home/mirafra/lab_assi/device_driver/day1/prg2/simple_char_dev.mod

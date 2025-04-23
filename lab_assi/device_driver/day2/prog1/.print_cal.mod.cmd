@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/day2/prog1/print_cal.mod := printf '%s\n'   print_cal.o | awk '!x[$$0]++ { print("/home/mirafra/lab_assi/device_driver/day2/prog1/"$$0) }' > /home/mirafra/lab_assi/device_driver/day2/prog1/print_cal.mod
