@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/vishnu/Ldd_training/Device_Drivers/1st_day/Class/sample_driver/hello_driver.mod := printf '%s\n'   hello_driver.o | awk '!x[$$0]++ { print("/home/mirafra/vishnu/Ldd_training/Device_Drivers/1st_day/Class/sample_driver/"$$0) }' > /home/mirafra/vishnu/Ldd_training/Device_Drivers/1st_day/Class/sample_driver/hello_driver.mod

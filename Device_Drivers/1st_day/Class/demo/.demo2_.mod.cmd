@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/vishnu/Ldd_training/Device_Drivers/1st_day/Class/demo/demo2_.mod := printf '%s\n'   demo2_.o | awk '!x[$$0]++ { print("/home/mirafra/vishnu/Ldd_training/Device_Drivers/1st_day/Class/demo/"$$0) }' > /home/mirafra/vishnu/Ldd_training/Device_Drivers/1st_day/Class/demo/demo2_.mod
