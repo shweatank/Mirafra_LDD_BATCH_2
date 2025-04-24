@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/vishnu/Ldd_training/Device_Drivers/1st_day/Assignments/charcalc1/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/vishnu/Ldd_training/Device_Drivers/1st_day/Assignments/charcalc1/Module.symvers -T /home/mirafra/vishnu/Ldd_training/Device_Drivers/1st_day/Assignments/charcalc1/modules.order -i Module.symvers -e 

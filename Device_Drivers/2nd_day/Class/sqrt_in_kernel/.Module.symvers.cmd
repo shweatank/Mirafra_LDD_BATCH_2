@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/vishnu/Ldd_training/Device_Drivers/2nd_day/Class/sqrt_in_kernel/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/vishnu/Ldd_training/Device_Drivers/2nd_day/Class/sqrt_in_kernel/Module.symvers -T /home/mirafra/vishnu/Ldd_training/Device_Drivers/2nd_day/Class/sqrt_in_kernel/modules.order -i Module.symvers -e 
