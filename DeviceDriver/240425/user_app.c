@@ -2,6 +2,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
+#include <stdlib.h>
 
 int main() {
     int fd;
@@ -16,6 +17,8 @@ int main() {
 
     printf("Enter operation (e.g., 5 + 3): ");
     fgets(input, sizeof(input), stdin);
+   
+    input[strcspn(input, "\n")] = 0;
 
     write(fd, input, strlen(input));
 
