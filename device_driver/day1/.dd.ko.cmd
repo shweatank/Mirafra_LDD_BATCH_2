@@ -1,0 +1,1 @@
+cmd_/home/mirafra/bhavitha/device_driver/day1/dd.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/bhavitha/device_driver/day1/dd.ko /home/mirafra/bhavitha/device_driver/day1/dd.o /home/mirafra/bhavitha/device_driver/day1/dd.mod.o;  true

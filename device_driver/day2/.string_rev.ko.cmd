@@ -1,0 +1,1 @@
+cmd_/home/mirafra/bhavitha/device_driver/day2/string_rev.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/bhavitha/device_driver/day2/string_rev.ko /home/mirafra/bhavitha/device_driver/day2/string_rev.o /home/mirafra/bhavitha/device_driver/day2/string_rev.mod.o;  true

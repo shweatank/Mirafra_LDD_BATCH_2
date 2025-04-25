@@ -1,0 +1,1 @@
+cmd_/home/mirafra/bhavitha/device_driver/day2/kernel_space1.mod := printf '%s\n'   kernel_space1.o | awk '!x[$$0]++ { print("/home/mirafra/bhavitha/device_driver/day2/"$$0) }' > /home/mirafra/bhavitha/device_driver/day2/kernel_space1.mod

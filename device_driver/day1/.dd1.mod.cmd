@@ -1,0 +1,1 @@
+cmd_/home/mirafra/bhavitha/device_driver/day1/dd1.mod := printf '%s\n'   dd1.o | awk '!x[$$0]++ { print("/home/mirafra/bhavitha/device_driver/day1/"$$0) }' > /home/mirafra/bhavitha/device_driver/day1/dd1.mod
