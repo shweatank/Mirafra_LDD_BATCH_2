@@ -5,19 +5,21 @@
 #include <sys/ioctl.h>
 #include <string.h>
 
-#define DEVICE "/dev/IOCTL_STRING"
+#define DEVICE "/dev/simple_calculator"
 #define MAGIC_NUM 100
 #define IOCTL_SET_DATA _IOW(MAGIC_NUM, 0, struct calc_data *)
 #define IOCTL_GET_RESULT _IOR(MAGIC_NUM, 1, int *)
 
-struct str_data {
-    char input_str[100];
-    char res_str[100];
+struct calc_data {
+    int num1;
+    int num2;
+    char operation;
+    int result;
 };
 
 int main() {
     int fd, result;
-    struct str_data str;
+    struct calc_data calc;
 
     fd = open(DEVICE, O_RDWR);
     if (fd < 0) {
@@ -26,16 +28,16 @@ int main() {
     }
 
     // Get user input
-    printf("Enter input String :  ");
-    scanf(" %[^\n]", str.input_str);
+    printf("Enter calculation (e.g., 10 + 5): ");
+    scanf("%d %c %d", &calc.num1, &calc.operation, &calc.num2);
 
     // Send data to kernel
-    ioctl(fd, IOCTL_SET_DATA, &str);
+    ioctl(fd, IOCTL_SET_DATA, &calc);
 
     // Get result from kernel
-    ioctl(fd, IOCTL_GET_RESULT, &str.res_str);
+    ioctl(fd, IOCTL_GET_RESULT, &result);
 
-    printf("Result: %s\n", str.res_str);
+    printf("Result: %d\n", result);
 
     close(fd);
     return 0;
