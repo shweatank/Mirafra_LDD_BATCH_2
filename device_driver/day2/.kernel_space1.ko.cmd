@@ -1,1 +1,0 @@
-cmd_/home/mirafra/bhavitha/device_driver/day2/kernel_space1.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/bhavitha/device_driver/day2/kernel_space1.ko /home/mirafra/bhavitha/device_driver/day2/kernel_space1.o /home/mirafra/bhavitha/device_driver/day2/kernel_space1.mod.o;  true

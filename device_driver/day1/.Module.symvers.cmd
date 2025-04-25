@@ -1,1 +1,0 @@
-cmd_/home/mirafra/bhavitha/device_driver/day1/Module.symvers :=  scripts/mod/modpost -m -a     -o /home/mirafra/bhavitha/device_driver/day1/Module.symvers -T /home/mirafra/bhavitha/device_driver/day1/modules.order -i Module.symvers -e 
