@@ -15,7 +15,7 @@ static int hello_init(void)
 static void hello_exit(void)
 {
     printk(KERN_ALERT "GoodBye, Cruel World\n");
-    int diff = a + b;
+    int diff = a - b;
     printk(KERN_ALERT "diff of a and b: %d\n", diff);
     
 }
