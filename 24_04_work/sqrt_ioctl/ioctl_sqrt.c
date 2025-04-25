@@ -5,6 +5,7 @@
 #include <linux/slab.h>
 #include <linux/ioctl.h>
 #include <linux/string.h>
+#include <linux/math64.h>
 
 #define DEVICE_NAME "IOCTL_SQRT"
 #define MAGIC_NUM 100
@@ -30,12 +31,27 @@ static void perform_sqrt(void) {
 
     if(calc_buffer->data < 0)
 	return ;
-    double guess,new_guess,precision;
+
+    int guess = calc_buffer->data / 2;
+    int new_guess;
+    int precision = 1;  // Precision level for the calculation
+
+    while (1) {
+        new_guess = (guess + calc_buffer->data / guess) / 2;
+        if (guess == new_guess) {
+            break;
+        }
+        guess = new_guess;
+    }
+
+
+    /*
+    double  guess,new_guess,precision;
     guess = 1;
     precision = 0.0001;
 
     while (1) {
-	new_guess = 0.5 * (guess + calc_buffer->data / guess);
+	new_guess =  (guess + calc_buffer->data / guess)/2;
 
 	// Check if the result is within the tolerance
 	if (guess - new_guess < precision) {
@@ -44,7 +60,7 @@ static void perform_sqrt(void) {
 
 	guess = new_guess;
     }
-
+*/
     calc_buffer->result  = guess; 
 
     printk(KERN_INFO"%d\n",calc_buffer->data);

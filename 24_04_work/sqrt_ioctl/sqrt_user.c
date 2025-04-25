@@ -35,7 +35,7 @@ int main() {
     // Get result from kernel
     ioctl(fd, IOCTL_GET_RESULT, &data.result);
 
-    printf("Result: %s\n", data.result);
+    printf("Result: %d\n", data.result);
 
     close(fd);
     return 0;
