@@ -36,6 +36,20 @@ static ssize_t dev_write(struct file *filep, const char __user *buffer, size_t l
     }
 
     message[len] = '\0';  // Null terminate the string
+    reverse_string(message);  // Reverse the received input
+    
+    kstrtoint(message, 10, &result); // Convert string input to integer if possible
+    printk(KERN_INFO "charcalc: Received and reversed string %s\n", message);
+
+    return len;
+}
+
+static ssize_t dev_write(struct file *filep, const char __user *buffer, size_t len, loff_t *offset) {
+    if (copy_from_user(message, buffer, len)) {
+        return -EFAULT;
+    }
+
+    message[len] = '\0';  // Null terminate the string
     kstrtoint(message, 10, &result); // Convert string input to integer
     printk(KERN_INFO "charcalc: Received number %d\n", result);
 
@@ -65,10 +79,4 @@ static void __exit charcalc_exit(void) {
     printk(KERN_INFO "charcalc: Unregistered device\n");
 }
 
-module_init(charcalc_init);
-module_exit(charcalc_exit);
 
-MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Your Name");
-MODULE_DESCRIPTION("A simple character device that calculates square root.")
- 
