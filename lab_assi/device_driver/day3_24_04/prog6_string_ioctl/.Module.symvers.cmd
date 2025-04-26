@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/day3_24_04/prog6_string_ioctl/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/lab_assi/device_driver/day3_24_04/prog6_string_ioctl/Module.symvers -T /home/mirafra/lab_assi/device_driver/day3_24_04/prog6_string_ioctl/modules.order -i Module.symvers -e 

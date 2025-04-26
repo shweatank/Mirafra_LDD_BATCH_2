@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/day3/prog5_squre_ioctl/modules.order := {   echo /home/mirafra/lab_assi/device_driver/day3/prog5_squre_ioctl/sqr_system.o; :; } > /home/mirafra/lab_assi/device_driver/day3/prog5_squre_ioctl/modules.order

@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/day3/prog4_ioctl/cal_system.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/lab_assi/device_driver/day3/prog4_ioctl/cal_system.ko /home/mirafra/lab_assi/device_driver/day3/prog4_ioctl/cal_system.o /home/mirafra/lab_assi/device_driver/day3/prog4_ioctl/cal_system.mod.o

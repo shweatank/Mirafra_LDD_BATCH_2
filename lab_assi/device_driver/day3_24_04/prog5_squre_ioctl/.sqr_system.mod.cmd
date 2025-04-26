@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/day3/prog5_squre_ioctl/sqr_system.mod := printf '%s\n'   sqr_system.o | awk '!x[$$0]++ { print("/home/mirafra/lab_assi/device_driver/day3/prog5_squre_ioctl/"$$0) }' > /home/mirafra/lab_assi/device_driver/day3/prog5_squre_ioctl/sqr_system.mod

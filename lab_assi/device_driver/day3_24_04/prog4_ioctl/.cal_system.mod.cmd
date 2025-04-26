@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/day3/prog4_ioctl/cal_system.mod := printf '%s\n'   cal_system.o | awk '!x[$$0]++ { print("/home/mirafra/lab_assi/device_driver/day3/prog4_ioctl/"$$0) }' > /home/mirafra/lab_assi/device_driver/day3/prog4_ioctl/cal_system.mod

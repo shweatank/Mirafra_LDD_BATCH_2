@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/day2/prog2/module_user_write.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/lab_assi/device_driver/day2/prog2/module_user_write.ko /home/mirafra/lab_assi/device_driver/day2/prog2/module_user_write.o /home/mirafra/lab_assi/device_driver/day2/prog2/module_user_write.mod.o
