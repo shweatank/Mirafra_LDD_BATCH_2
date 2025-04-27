@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/vishnu/Ldd_training/Device_Drivers/3rd_day/Assignments/IOCTL_square/IOCTL_square.mod := printf '%s\n'   IOCTL_square.o | awk '!x[$$0]++ { print("/home/mirafra/vishnu/Ldd_training/Device_Drivers/3rd_day/Assignments/IOCTL_square/"$$0) }' > /home/mirafra/vishnu/Ldd_training/Device_Drivers/3rd_day/Assignments/IOCTL_square/IOCTL_square.mod
