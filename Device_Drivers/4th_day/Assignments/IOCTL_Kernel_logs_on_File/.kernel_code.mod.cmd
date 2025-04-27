@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/vishnu/Ldd_training/Device_Drivers/4th_day/Assignments/Kernel_logs_on_File/kernel_code.mod := printf '%s\n'   kernel_code.o | awk '!x[$$0]++ { print("/home/mirafra/vishnu/Ldd_training/Device_Drivers/4th_day/Assignments/Kernel_logs_on_File/"$$0) }' > /home/mirafra/vishnu/Ldd_training/Device_Drivers/4th_day/Assignments/Kernel_logs_on_File/kernel_code.mod

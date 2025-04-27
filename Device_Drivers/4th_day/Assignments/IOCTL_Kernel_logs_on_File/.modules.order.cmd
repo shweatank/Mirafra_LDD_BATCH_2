@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/vishnu/Ldd_training/Device_Drivers/4th_day/Assignments/Kernel_logs_on_File/modules.order := {   echo /home/mirafra/vishnu/Ldd_training/Device_Drivers/4th_day/Assignments/Kernel_logs_on_File/kernel_code.o; :; } > /home/mirafra/vishnu/Ldd_training/Device_Drivers/4th_day/Assignments/Kernel_logs_on_File/modules.order
