@@ -1,0 +1,1 @@
+From kernel: sum=19 diff=1 div=1 mul=90 sqrt=3

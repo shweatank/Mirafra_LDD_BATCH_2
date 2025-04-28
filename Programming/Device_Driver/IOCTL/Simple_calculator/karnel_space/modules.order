@@ -1,0 +1,1 @@
+/home/mirafra/Documents/Akash/Mirafra_LDD_BATCH_2/Programming/Device_Driver/Simple_calculator/karnel_space/simple_calculator.o

@@ -35,29 +35,21 @@ MODULE_INFO(retpoline, "Y");
 
 static const struct modversion_info ____versions[]
 __used __section("__versions") = {
-	{ 0xa916b694, "strnlen" },
-	{ 0x88db9f48, "__check_object_size" },
+	{ 0xb22ef59e, "kmalloc_caches" },
+	{ 0xd8dcb679, "kmalloc_trace" },
 	{ 0x6b10bee1, "_copy_to_user" },
-	{ 0x5b8239ca, "__x86_return_thunk" },
-	{ 0xcbd4898c, "fortify_panic" },
-	{ 0x9ec6ca96, "ktime_get_real_ts64" },
-	{ 0xfff5afc, "time64_to_tm" },
-	{ 0x656e4a6e, "snprintf" },
-	{ 0xf0fdf6cb, "__stack_chk_fail" },
 	{ 0x13c49cc2, "_copy_from_user" },
-	{ 0xbcab6ee6, "sscanf" },
-	{ 0xb678366f, "int_sqrt" },
-	{ 0x122c3a7e, "_printk" },
-	{ 0x7682ba4e, "__copy_overflow" },
-	{ 0x87a21cb3, "__ubsan_handle_out_of_bounds" },
-	{ 0x6bc3fbc0, "__unregister_chrdev" },
-	{ 0x754d539c, "strlen" },
 	{ 0x760e5b9b, "__register_chrdev" },
+	{ 0x6bc3fbc0, "__unregister_chrdev" },
 	{ 0xbdfb6dbb, "__fentry__" },
+	{ 0x37a0cba, "kfree" },
+	{ 0x122c3a7e, "_printk" },
+	{ 0x5b8239ca, "__x86_return_thunk" },
+	{ 0x4c03a563, "random_kmalloc_seed" },
 	{ 0x2273f01b, "module_layout" },
 };
 
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "450AF84C67195D6BB5A2CB3");
+MODULE_INFO(srcversion, "B56B39B125007CA244B5BBE");
