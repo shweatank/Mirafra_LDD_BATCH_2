@@ -1,0 +1,3 @@
+[INFO] [2025-04-26 12:12:01] This is an info message for entry
+[ERROR] [2025-04-26 12:12:01] This is an error message with code -1
+[INFO] [2025-04-26 12:12:47] This is an info message for exit

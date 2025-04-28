@@ -1,0 +1,1 @@
+/home/mirafra/lab_assi/device_driver/day4_26_04/task2_kerlel_log_file_save/log_kernel_file.o

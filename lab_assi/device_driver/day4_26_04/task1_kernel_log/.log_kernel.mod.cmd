@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/day4_26_04/task1_kernel_log/log_kernel.mod := printf '%s\n'   log_kernel.o | awk '!x[$$0]++ { print("/home/mirafra/lab_assi/device_driver/day4_26_04/task1_kernel_log/"$$0) }' > /home/mirafra/lab_assi/device_driver/day4_26_04/task1_kernel_log/log_kernel.mod
