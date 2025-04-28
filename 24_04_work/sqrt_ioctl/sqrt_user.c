@@ -11,12 +11,12 @@
 #define IOCTL_GET_RESULT _IOR(MAGIC_NUM, 1, int *)
 
 struct int_data {
-    int input;
-    int result;
+    double input;
+    double result;
 };
 
 int main() {
-    int fd, result;
+    int fd;
     struct int_data data;
 
     fd = open(DEVICE, O_RDWR);
@@ -27,7 +27,7 @@ int main() {
 
     // Get user input
     printf("Enter input value :  ");
-    scanf("%d", &data.input);
+    scanf("%ld", &data.input);
 
     // Send data to kernel
     ioctl(fd, IOCTL_SET_DATA, &data);
@@ -35,7 +35,7 @@ int main() {
     // Get result from kernel
     ioctl(fd, IOCTL_GET_RESULT, &data.result);
 
-    printf("Result: %d\n", data.result);
+    printf("Result: %ld\n", data.result);
 
     close(fd);
     return 0;
