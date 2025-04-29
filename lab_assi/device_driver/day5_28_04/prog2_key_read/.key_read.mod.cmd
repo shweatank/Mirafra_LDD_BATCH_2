@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/day5_28_04/prog2_key_read/key_read.mod := printf '%s\n'   key_read.o | awk '!x[$$0]++ { print("/home/mirafra/lab_assi/device_driver/day5_28_04/prog2_key_read/"$$0) }' > /home/mirafra/lab_assi/device_driver/day5_28_04/prog2_key_read/key_read.mod

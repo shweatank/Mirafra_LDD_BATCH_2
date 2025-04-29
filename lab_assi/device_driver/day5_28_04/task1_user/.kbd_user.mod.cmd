@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/day5_28_04/task1_user/kbd_user.mod := printf '%s\n'   kbd_user.o | awk '!x[$$0]++ { print("/home/mirafra/lab_assi/device_driver/day5_28_04/task1_user/"$$0) }' > /home/mirafra/lab_assi/device_driver/day5_28_04/task1_user/kbd_user.mod

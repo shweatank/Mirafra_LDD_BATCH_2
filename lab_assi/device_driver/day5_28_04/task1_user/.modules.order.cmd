@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/day5_28_04/task1_user/modules.order := {   echo /home/mirafra/lab_assi/device_driver/day5_28_04/task1_user/kbd_user.o; :; } > /home/mirafra/lab_assi/device_driver/day5_28_04/task1_user/modules.order
