@@ -1,4 +1,4 @@
-obj-m += rev_string_ioctl.o
+obj-m += kernel_cal.o
 
 all:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules

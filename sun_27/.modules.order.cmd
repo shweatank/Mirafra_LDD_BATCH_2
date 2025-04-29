@@ -1,0 +1,1 @@
+cmd_/home/mirafra/git/Mirafra_LDD_BATCH_2/sun_27/modules.order := {   echo /home/mirafra/git/Mirafra_LDD_BATCH_2/sun_27/kernel_cal.ko; :; } | awk '!x[$$0]++' - > /home/mirafra/git/Mirafra_LDD_BATCH_2/sun_27/modules.order

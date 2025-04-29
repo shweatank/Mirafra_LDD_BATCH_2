@@ -1,0 +1,8 @@
+[2025-04-26 11:22:16] [DEBUG] This is a debug message
+[2025-04-26 11:22:16] [INFO] This is an info message
+[2025-04-26 11:22:16] [WARNING] This is a warning message
+[2025-04-26 11:22:16] [ERROR] This is an error message
+[2025-04-26 11:26:35] [WARNING] This is a warning message
+[2025-04-26 11:26:35] [ERROR] This is an error message
+[2025-04-26 11:59:37] [WARNING] This is a warning message
+[2025-04-26 11:59:37] [ERROR] This is an error message

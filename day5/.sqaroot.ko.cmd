@@ -1,1 +1,0 @@
-cmd_/home/mirafra/ldd/day5/sqaroot.ko := ld -r  -m elf_x86_64 -z noexecstack   --build-id=sha1  -T scripts/module.lds -o /home/mirafra/ldd/day5/sqaroot.ko /home/mirafra/ldd/day5/sqaroot.o /home/mirafra/ldd/day5/sqaroot.mod.o;  true
