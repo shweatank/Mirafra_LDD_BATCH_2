@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/day6_29_04/prog4_high_resol/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/lab_assi/device_driver/day6_29_04/prog4_high_resol/Module.symvers -T /home/mirafra/lab_assi/device_driver/day6_29_04/prog4_high_resol/modules.order -i Module.symvers -e 

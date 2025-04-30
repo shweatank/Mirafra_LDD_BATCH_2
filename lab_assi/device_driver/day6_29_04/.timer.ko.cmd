@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/day6_29_04/timer.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/lab_assi/device_driver/day6_29_04/timer.ko /home/mirafra/lab_assi/device_driver/day6_29_04/timer.o /home/mirafra/lab_assi/device_driver/day6_29_04/timer.mod.o
