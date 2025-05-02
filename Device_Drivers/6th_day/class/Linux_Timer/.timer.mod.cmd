@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/vishnu/Ldd_training/Device_Drivers/6th_day/class/Timer/timer.mod := printf '%s\n'   timer.o | awk '!x[$$0]++ { print("/home/mirafra/vishnu/Ldd_training/Device_Drivers/6th_day/class/Timer/"$$0) }' > /home/mirafra/vishnu/Ldd_training/Device_Drivers/6th_day/class/Timer/timer.mod
