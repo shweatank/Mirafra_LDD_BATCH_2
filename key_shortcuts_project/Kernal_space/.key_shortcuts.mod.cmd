@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Documents/Akash/key_shortcuts_project/Kernal_space/key_shortcuts.mod := printf '%s\n'   key_shortcuts.o | awk '!x[$$0]++ { print("/home/mirafra/Documents/Akash/key_shortcuts_project/Kernal_space/"$$0) }' > /home/mirafra/Documents/Akash/key_shortcuts_project/Kernal_space/key_shortcuts.mod
