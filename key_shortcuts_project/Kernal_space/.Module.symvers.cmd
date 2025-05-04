@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Documents/Akash/key_shortcuts_project/Kernal_space/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/Documents/Akash/key_shortcuts_project/Kernal_space/Module.symvers -T /home/mirafra/Documents/Akash/key_shortcuts_project/Kernal_space/modules.order -i Module.symvers -e 
