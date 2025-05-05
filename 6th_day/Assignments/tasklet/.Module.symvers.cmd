@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/vishnu/Ldd_training/Device_Drivers/6th_day/Assignments/tasklet/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/vishnu/Ldd_training/Device_Drivers/6th_day/Assignments/tasklet/Module.symvers -T /home/mirafra/vishnu/Ldd_training/Device_Drivers/6th_day/Assignments/tasklet/modules.order -i Module.symvers -e 

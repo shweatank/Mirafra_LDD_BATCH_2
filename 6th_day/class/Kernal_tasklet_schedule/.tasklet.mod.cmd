@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/vishnu/Ldd_training/Device_Drivers/6th_day/class/Kernal_tasklet_schedule/tasklet.mod := printf '%s\n'   tasklet.o | awk '!x[$$0]++ { print("/home/mirafra/vishnu/Ldd_training/Device_Drivers/6th_day/class/Kernal_tasklet_schedule/"$$0) }' > /home/mirafra/vishnu/Ldd_training/Device_Drivers/6th_day/class/Kernal_tasklet_schedule/tasklet.mod
