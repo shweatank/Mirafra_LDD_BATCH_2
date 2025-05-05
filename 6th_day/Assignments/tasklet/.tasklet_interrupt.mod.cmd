@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/vishnu/Ldd_training/Device_Drivers/6th_day/Assignments/tasklet/tasklet_interrupt.mod := printf '%s\n'   tasklet_interrupt.o | awk '!x[$$0]++ { print("/home/mirafra/vishnu/Ldd_training/Device_Drivers/6th_day/Assignments/tasklet/"$$0) }' > /home/mirafra/vishnu/Ldd_training/Device_Drivers/6th_day/Assignments/tasklet/tasklet_interrupt.mod
