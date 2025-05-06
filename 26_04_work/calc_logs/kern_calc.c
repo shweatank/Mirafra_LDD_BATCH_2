@@ -110,7 +110,7 @@ static int __init simple_calculator_init(void) {
     }
 
     pr_info("%s Loaded (Major: %d)\n",DEVICE_NAME, major);
-    file = filp_open("calc_logs.txt", O_WRONLY | O_CREAT | O_APPEND, 0644);
+    file = filp_open("/var/log/calc_logs.log", O_WRONLY | O_CREAT | O_APPEND, 0644);
     if (IS_ERR(file)) {
 	printk(KERN_ERR "calc: Failed to open log file\n");
 	return PTR_ERR(file);
