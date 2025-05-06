@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/vishnu/Ldd_training/Device_Drivers/7th_day/class/workqueue/workqueue.mod := printf '%s\n'   workqueue.o | awk '!x[$$0]++ { print("/home/mirafra/vishnu/Ldd_training/Device_Drivers/7th_day/class/workqueue/"$$0) }' > /home/mirafra/vishnu/Ldd_training/Device_Drivers/7th_day/class/workqueue/workqueue.mod

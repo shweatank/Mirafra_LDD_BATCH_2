@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/vishnu/Ldd_training/Device_Drivers/7th_day/class/waitqueue/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/vishnu/Ldd_training/Device_Drivers/7th_day/class/waitqueue/Module.symvers -T /home/mirafra/vishnu/Ldd_training/Device_Drivers/7th_day/class/waitqueue/modules.order -i Module.symvers -e 
