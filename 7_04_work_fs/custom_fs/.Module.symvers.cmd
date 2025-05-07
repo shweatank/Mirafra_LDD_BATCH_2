@@ -1,0 +1,1 @@
+cmd_/home/mirafra/Device_Drivers/class_work/Mirafra_LDD_BATCH_2/7_04_work_fs/custom_fs/Module.symvers := sed 's/ko$$/o/' /home/mirafra/Device_Drivers/class_work/Mirafra_LDD_BATCH_2/7_04_work_fs/custom_fs/modules.order | scripts/mod/modpost -m -a   -o /home/mirafra/Device_Drivers/class_work/Mirafra_LDD_BATCH_2/7_04_work_fs/custom_fs/Module.symvers -e -i Module.symvers   -T -

@@ -1,0 +1,20 @@
+make
+sudo insmod myfs.ko
+mkdir /tmp/myfs_mount
+sudo mount -t myfs none /tmp/myfs_mount
+dmesg | tail -30
+sudo umount /tmp/myfs_mount
+sudo rmmod myfs
+make clean
+
+// output
+[ 1234.567890] myfs: registered
+[ 1234.567902] myfs: Root inode created:
+[ 1234.567905]   Inode number: 1000
+[ 1234.567906]   Mode: 0x41ed
+[ 1234.567907]   UID: 0, GID: 0
+[ 1234.567909] myfs: Dentry created:
+[ 1234.567910]   Dentry name: /
+[ 1234.567911]   Dentry flags: 0x10
+[ 1234.567912]   Dentry inode: ffff8881034f0080
+[ 1234.567913] myfs: filesystem mounted with detailed logging
