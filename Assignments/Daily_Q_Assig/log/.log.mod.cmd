@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Documents/Akash/Mirafra_LDD_BATCH_2/Assignments/Daily_Q_Assig/log/log.mod := printf '%s\n'   log.o | awk '!x[$$0]++ { print("/home/mirafra/Documents/Akash/Mirafra_LDD_BATCH_2/Assignments/Daily_Q_Assig/log/"$$0) }' > /home/mirafra/Documents/Akash/Mirafra_LDD_BATCH_2/Assignments/Daily_Q_Assig/log/log.mod

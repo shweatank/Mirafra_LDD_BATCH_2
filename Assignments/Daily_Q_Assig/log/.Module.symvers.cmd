@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Documents/Akash/Mirafra_LDD_BATCH_2/Assignments/Daily_Q_Assig/log/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/Documents/Akash/Mirafra_LDD_BATCH_2/Assignments/Daily_Q_Assig/log/Module.symvers -T /home/mirafra/Documents/Akash/Mirafra_LDD_BATCH_2/Assignments/Daily_Q_Assig/log/modules.order -i Module.symvers -e 
