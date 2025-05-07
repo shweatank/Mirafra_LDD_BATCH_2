@@ -1,0 +1,1 @@
+cmd_/home/mirafra/Documents/Mirafra_LDD_BATCH_2/DeviceDriver/070525/Module.symvers := sed 's/\.ko$$/\.o/' /home/mirafra/Documents/Mirafra_LDD_BATCH_2/DeviceDriver/070525/modules.order | scripts/mod/modpost -m -a  -o /home/mirafra/Documents/Mirafra_LDD_BATCH_2/DeviceDriver/070525/Module.symvers -e -i Module.symvers   -T -

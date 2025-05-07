@@ -1,0 +1,1 @@
+cmd_/home/mirafra/Documents/Mirafra_LDD_BATCH_2/DeviceDriver/070525/myfs.mod := { echo  /home/mirafra/Documents/Mirafra_LDD_BATCH_2/DeviceDriver/070525/myfs.o;  echo; } > /home/mirafra/Documents/Mirafra_LDD_BATCH_2/DeviceDriver/070525/myfs.mod
