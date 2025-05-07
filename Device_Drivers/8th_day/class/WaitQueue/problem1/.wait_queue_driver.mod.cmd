@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/vishnu/Ldd_training/Device_Drivers/8th_day/class/WaitQueue/problem1/wait_queue_driver.mod := printf '%s\n'   wait_queue_driver.o | awk '!x[$$0]++ { print("/home/mirafra/vishnu/Ldd_training/Device_Drivers/8th_day/class/WaitQueue/problem1/"$$0) }' > /home/mirafra/vishnu/Ldd_training/Device_Drivers/8th_day/class/WaitQueue/problem1/wait_queue_driver.mod
