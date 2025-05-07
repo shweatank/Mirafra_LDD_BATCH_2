@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/day8_07_05/my_own_file/modules.order := {   echo /home/mirafra/lab_assi/device_driver/day8_07_05/my_own_file/own_file.o; :; } > /home/mirafra/lab_assi/device_driver/day8_07_05/my_own_file/modules.order

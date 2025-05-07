@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/day8_06_05/task1_waitqueue/modules.order := {   echo /home/mirafra/lab_assi/device_driver/day8_06_05/task1_waitqueue/waitqueue.o; :; } > /home/mirafra/lab_assi/device_driver/day8_06_05/task1_waitqueue/modules.order

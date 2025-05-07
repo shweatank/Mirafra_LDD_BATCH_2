@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/day8_07_05/my_own_file/own_file.mod := printf '%s\n'   own_file.o | awk '!x[$$0]++ { print("/home/mirafra/lab_assi/device_driver/day8_07_05/my_own_file/"$$0) }' > /home/mirafra/lab_assi/device_driver/day8_07_05/my_own_file/own_file.mod

@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/assesment/manual_control_bright/modules.order := {   echo /home/mirafra/lab_assi/assesment/manual_control_bright/bright_button.o; :; } > /home/mirafra/lab_assi/assesment/manual_control_bright/modules.order

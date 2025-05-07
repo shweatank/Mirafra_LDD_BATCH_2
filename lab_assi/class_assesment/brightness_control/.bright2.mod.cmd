@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/assesment/brightness_control/bright2.mod := printf '%s\n'   bright2.o | awk '!x[$$0]++ { print("/home/mirafra/lab_assi/assesment/brightness_control/"$$0) }' > /home/mirafra/lab_assi/assesment/brightness_control/bright2.mod

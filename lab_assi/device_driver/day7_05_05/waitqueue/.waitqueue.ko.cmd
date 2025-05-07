@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/day7_05_05/waitqueue/waitqueue.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/lab_assi/device_driver/day7_05_05/waitqueue/waitqueue.ko /home/mirafra/lab_assi/device_driver/day7_05_05/waitqueue/waitqueue.o /home/mirafra/lab_assi/device_driver/day7_05_05/waitqueue/waitqueue.mod.o

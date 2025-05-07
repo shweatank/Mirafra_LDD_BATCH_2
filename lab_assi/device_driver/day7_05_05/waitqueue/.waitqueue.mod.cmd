@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/day7_05_05/waitqueue/waitqueue.mod := printf '%s\n'   waitqueue.o | awk '!x[$$0]++ { print("/home/mirafra/lab_assi/device_driver/day7_05_05/waitqueue/"$$0) }' > /home/mirafra/lab_assi/device_driver/day7_05_05/waitqueue/waitqueue.mod

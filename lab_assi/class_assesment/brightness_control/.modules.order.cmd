@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/assesment/brightness_control/modules.order := {   echo /home/mirafra/lab_assi/assesment/brightness_control/bright2.o; :; } > /home/mirafra/lab_assi/assesment/brightness_control/modules.order

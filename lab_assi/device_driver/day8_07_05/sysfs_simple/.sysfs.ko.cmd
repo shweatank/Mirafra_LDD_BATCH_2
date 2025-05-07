@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/day8_07_05/sysfs_simple/sysfs.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/lab_assi/device_driver/day8_07_05/sysfs_simple/sysfs.ko /home/mirafra/lab_assi/device_driver/day8_07_05/sysfs_simple/sysfs.o /home/mirafra/lab_assi/device_driver/day8_07_05/sysfs_simple/sysfs.mod.o

@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/day8_07_05/sysfs_user_level/sysfs.mod := printf '%s\n'   sysfs.o | awk '!x[$$0]++ { print("/home/mirafra/lab_assi/device_driver/day8_07_05/sysfs_user_level/"$$0) }' > /home/mirafra/lab_assi/device_driver/day8_07_05/sysfs_user_level/sysfs.mod

@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/assesment/brightness_control/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/lab_assi/assesment/brightness_control/Module.symvers -T /home/mirafra/lab_assi/assesment/brightness_control/modules.order -i Module.symvers -e 

@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/day8_07_05/sysfs_calcu/modules.order := {   echo /home/mirafra/lab_assi/device_driver/day8_07_05/sysfs_calcu/sysfs.o; :; } > /home/mirafra/lab_assi/device_driver/day8_07_05/sysfs_calcu/modules.order

@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/assesment/manual_control_bright/bright_button.mod := printf '%s\n'   bright_button.o | awk '!x[$$0]++ { print("/home/mirafra/lab_assi/assesment/manual_control_bright/"$$0) }' > /home/mirafra/lab_assi/assesment/manual_control_bright/bright_button.mod
