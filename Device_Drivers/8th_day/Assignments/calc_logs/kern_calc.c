@@ -11,7 +11,7 @@
 #define IOCTL_GET_RESULT _IOR(MAGIC_NUM, 1, int *)
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Mohan");
+MODULE_AUTHOR("Vishnuvardhan.K");
 MODULE_DESCRIPTION("Kernel Calculator using IOCTL and kmalloc - print all logs");
 MODULE_VERSION("1.0");
 
