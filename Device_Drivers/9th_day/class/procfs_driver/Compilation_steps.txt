@@ -1,0 +1,7 @@
+make
+sudo insmod my_proc_fs_driver.ko
+sudo echo Hello > /proc/my_proc
+cat /proc/my_proc
+sudo rmmod my_proc_fs_driver
+make clean
+

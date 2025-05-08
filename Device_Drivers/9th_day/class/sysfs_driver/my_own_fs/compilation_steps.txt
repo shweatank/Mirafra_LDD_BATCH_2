@@ -1,0 +1,8 @@
+make
+sudo insmod myfs.ko
+mkdir /tmp/myfs_mount
+sudo mount -t myfs none /tmp/myfs_mount
+dmesg | tail -30
+sudo umount /tmp/myfs_mount
+sudo rmmod myfs
+make clean

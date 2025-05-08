@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/vishnu/Ldd_training/Device_Drivers/9th_day/class/sysfs/example1/modules.order := {   echo /home/mirafra/vishnu/Ldd_training/Device_Drivers/9th_day/class/sysfs/example1/sysfs.o; :; } > /home/mirafra/vishnu/Ldd_training/Device_Drivers/9th_day/class/sysfs/example1/modules.order

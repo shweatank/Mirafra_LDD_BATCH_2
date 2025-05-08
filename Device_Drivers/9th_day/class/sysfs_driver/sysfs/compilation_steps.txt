@@ -1,0 +1,5 @@
+make
+sudo insmod myfs.k
+sudo chmod 777 /sys/kernel/my_sysfs/hello
+sudo echo 42 > /sys/kernel/my_sysfs/hello
+cat /sys/kernel/my_sysfs/hello

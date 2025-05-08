@@ -1,0 +1,53 @@
+1. Build the Kernel Module
+Make sure your kernel module is compiled correctly using the Makefile.
+
+make
+2. Insert the Kernel Module
+Load the compiled kernel module into the kernel:
+
+sudo insmod myfs.ko
+3. Check if the Module is Loaded
+Verify if the module is loaded successfully by listing the loaded modules:
+
+lsmod | grep myfs
+4. Create a Mount Point
+Create a directory where you will mount the custom filesystem:
+
+sudo mkdir /mnt/myfs
+5. Mount the Filesystem
+Mount the filesystem to the directory:
+
+sudo mount -t myfs none /mnt/myfs
+6. Verify the Mounted Filesystem
+Check if the filesystem is mounted correctly:
+
+df -h
+or
+
+mount | grep myfs
+7. Test the Filesystem
+Test the filesystem by creating files or directories:
+
+cd /mnt/myfs
+touch testfile
+ls -l
+8. Dismount the Filesystem
+When done testing, unmount the filesystem:
+
+sudo umount /mnt/myfs
+9. Remove the Kernel Module
+Remove the custom filesystem module from the kernel:
+
+sudo rmmod myfs
+10. Check if the Module is Removed
+Verify that the module is removed successfully:
+
+lsmod | grep myfs
+11. Clean Up
+Clean up the build artifacts by running:
+
+make clean
+12. Debugging with dmesg
+If you encounter issues with the filesystem or kernel logs, check the dmesg logs for more information:
+
+dmesg | tail -n 20
