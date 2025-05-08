@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/vishnu/Ldd_training/Device_Drivers/9th_day/class/sysfs/example1/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/vishnu/Ldd_training/Device_Drivers/9th_day/class/sysfs/example1/Module.symvers -T /home/mirafra/vishnu/Ldd_training/Device_Drivers/9th_day/class/sysfs/example1/modules.order -i Module.symvers -e 
