@@ -173,5 +173,5 @@ module_init(volctl_init);
 module_exit(volctl_exit);
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Grok");
+MODULE_AUTHOR("Akash");
 MODULE_DESCRIPTION("ALSA volume control via input subsystem");
