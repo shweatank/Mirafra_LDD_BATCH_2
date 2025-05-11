@@ -210,6 +210,6 @@ module_init(brightctl_init);
 module_exit(brightctl_exit);
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Grok");
+MODULE_AUTHOR("Akash");
 MODULE_DESCRIPTION("Kernel-space backlight brightness control (Intel only)");
 
