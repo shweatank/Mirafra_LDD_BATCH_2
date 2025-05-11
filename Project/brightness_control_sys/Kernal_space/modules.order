@@ -1,0 +1,1 @@
+/home/mirafra/Documents/Akash/Mirafra_LDD_BATCH_2/Project/brightness_control_sys/Kernal_space/brightness_sys.o
