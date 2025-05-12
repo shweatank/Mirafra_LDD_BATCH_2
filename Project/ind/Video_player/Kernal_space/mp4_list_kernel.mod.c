@@ -35,36 +35,33 @@ MODULE_INFO(retpoline, "Y");
 
 static const struct modversion_info ____versions[]
 __used __section("__versions") = {
-	{ 0x54c057fa, "cdev_add" },
-	{ 0x932aac8c, "class_create" },
-	{ 0x1421f594, "device_create" },
-	{ 0x1bed7c85, "input_register_handler" },
-	{ 0xada84b28, "device_destroy" },
-	{ 0xa9edd0d8, "class_destroy" },
-	{ 0x78445a7c, "cdev_del" },
-	{ 0x6091b333, "unregister_chrdev_region" },
-	{ 0x4d321e7e, "input_unregister_handler" },
+	{ 0x82f5eb5f, "path_put" },
+	{ 0x4d07136f, "filp_open" },
+	{ 0xc063935c, "iterate_dir" },
+	{ 0x792d7d44, "filp_close" },
+	{ 0x122c3a7e, "_printk" },
+	{ 0xf0fdf6cb, "__stack_chk_fail" },
+	{ 0x83557adc, "proc_create" },
 	{ 0x4c03a563, "random_kmalloc_seed" },
 	{ 0xcb742157, "kmalloc_caches" },
 	{ 0xfe1d3f1a, "kmalloc_trace" },
-	{ 0x14108376, "input_register_handle" },
-	{ 0x54876c5c, "input_open_device" },
-	{ 0xa916b694, "strnlen" },
-	{ 0x88db9f48, "__check_object_size" },
-	{ 0x6b10bee1, "_copy_to_user" },
-	{ 0xcbd4898c, "fortify_panic" },
-	{ 0xbdfb6dbb, "__fentry__" },
-	{ 0x122c3a7e, "_printk" },
-	{ 0x5b8239ca, "__x86_return_thunk" },
-	{ 0xebd4503, "input_close_device" },
-	{ 0xd0c484b1, "input_unregister_handle" },
+	{ 0x656e4a6e, "snprintf" },
 	{ 0x37a0cba, "kfree" },
-	{ 0xe3ec2f2b, "alloc_chrdev_region" },
-	{ 0x21be7f7b, "cdev_init" },
+	{ 0xe2d5255a, "strcmp" },
+	{ 0xc41355a8, "proc_remove" },
+	{ 0x52821b6d, "seq_read" },
+	{ 0xa797d86c, "seq_lseek" },
+	{ 0xcb1b2a3c, "single_release" },
+	{ 0xbdfb6dbb, "__fentry__" },
+	{ 0xdfcac0d2, "single_open" },
+	{ 0x5b8239ca, "__x86_return_thunk" },
+	{ 0xb4b312e4, "seq_printf" },
+	{ 0x87a21cb3, "__ubsan_handle_out_of_bounds" },
+	{ 0xc1b8b7d, "kern_path" },
 	{ 0x8d5e53af, "module_layout" },
 };
 
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "3603D0F047F7CEE35371DE4");
+MODULE_INFO(srcversion, "2213B2AC16357E74036E9C4");

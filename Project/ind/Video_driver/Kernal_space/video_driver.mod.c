@@ -35,33 +35,19 @@ MODULE_INFO(retpoline, "Y");
 
 static const struct modversion_info ____versions[]
 __used __section("__versions") = {
-	{ 0x8c8569cb, "kstrtoint" },
-	{ 0x122c3a7e, "_printk" },
-	{ 0xf0fdf6cb, "__stack_chk_fail" },
-	{ 0x87a21cb3, "__ubsan_handle_out_of_bounds" },
-	{ 0x656e4a6e, "snprintf" },
-	{ 0x1bed7c85, "input_register_handler" },
-	{ 0xa916b694, "strnlen" },
-	{ 0xd957e1ac, "kernel_write" },
-	{ 0xcbd4898c, "fortify_panic" },
-	{ 0x4d321e7e, "input_unregister_handler" },
-	{ 0x4c03a563, "random_kmalloc_seed" },
-	{ 0xcb742157, "kmalloc_caches" },
-	{ 0xfe1d3f1a, "kmalloc_trace" },
-	{ 0x14108376, "input_register_handle" },
-	{ 0x54876c5c, "input_open_device" },
+	{ 0x94ee6f0c, "v4l2_device_unregister" },
+	{ 0xa1c3117d, "v4l2_device_register" },
+	{ 0x2b703898, "video_device_alloc" },
+	{ 0x44658cd3, "video_device_release" },
+	{ 0xbe0d758d, "__video_register_device" },
 	{ 0xbdfb6dbb, "__fentry__" },
-	{ 0xebd4503, "input_close_device" },
-	{ 0xd0c484b1, "input_unregister_handle" },
-	{ 0x37a0cba, "kfree" },
+	{ 0x122c3a7e, "_printk" },
 	{ 0x5b8239ca, "__x86_return_thunk" },
-	{ 0x4d07136f, "filp_open" },
-	{ 0x38373c5f, "kernel_read" },
-	{ 0x792d7d44, "filp_close" },
+	{ 0x6b53cb8b, "video_unregister_device" },
 	{ 0x8d5e53af, "module_layout" },
 };
 
-MODULE_INFO(depends, "");
+MODULE_INFO(depends, "videodev");
 
 
-MODULE_INFO(srcversion, "6F09A1599929878B60C9009");
+MODULE_INFO(srcversion, "61066F479343B90B33B1156");

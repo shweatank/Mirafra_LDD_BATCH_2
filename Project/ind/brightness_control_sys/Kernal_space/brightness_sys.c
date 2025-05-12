@@ -4,6 +4,8 @@
 #include <linux/slab.h>
 #include <linux/fs.h>
 #include <linux/uaccess.h>
+#include <linux/dcache.h>
+#include <linux/namei.h>
 
 #define BRIGHTNESS_STEP 5 // Percentage step for brightness adjustment
 
@@ -73,19 +75,60 @@ static int write_sysfs_int(const char *path, int value) {
 }
 
 static int find_backlight_device(void) {
-    snprintf(backlight_path, sizeof(backlight_path), "/sys/class/backlight/intel_backlight");
-
+    struct path path;
+    struct inode *inode;
+    struct dir_context ctx = { .actor = NULL, .pos = 0 };
+    struct file *dir;
+    char *name;
     char max_brightness_path[256];
-    snprintf(max_brightness_path, sizeof(max_brightness_path), "%s/max_brightness", backlight_path);
+    int error;
 
-    max_brightness = read_sysfs_int(max_brightness_path);
-    if (max_brightness < 0) {
-        printk(KERN_ERR "brightctl: intel_backlight not found or unreadable\n");
-        return -1;
+    error = kern_path("/sys/class/backlight", LOOKUP_DIRECTORY, &path);
+    if (error) {
+        printk(KERN_ERR "brightctl: Failed to open /sys/class/backlight: %d\n", error);
+        return error;
     }
 
-    printk(KERN_INFO "brightctl: Using intel_backlight at %s\n", backlight_path);
-    return 0;
+    inode = path.dentry->d_inode;
+    dir = alloc_file(&path, FMODE_READ, NULL);
+    if (IS_ERR(dir)) {
+        path_put(&path);
+        printk(KERN_ERR "brightctl: Failed to allocate file: %ld\n", PTR_ERR(dir));
+        return PTR_ERR(dir);
+    }
+
+    dir->f_op = inode->i_fop;
+    dir->f_mode |= FMODE_READ;
+
+    error = iterate_dir(dir, &ctx);
+    if (error < 0) {
+        filp_close(dir, NULL);
+        path_put(&path);
+        printk(KERN_ERR "brightctl: Failed to iterate /sys/class/backlight: %d\n", error);
+        return error;
+    }
+
+    struct dir_context *dirent = dir->private_data;
+    while (dirent && dirent->pos < ctx.pos) {
+        name = dirent->name;
+        if (name[0] != '.') {
+            snprintf(backlight_path, sizeof(backlight_path), "/sys/class/backlight/%s", name);
+            snprintf(max_brightness_path, sizeof(max_brightness_path), "%s/max_brightness", backlight_path);
+            max_brightness = read_sysfs_int(max_brightness_path);
+            if (max_brightness >= 0) {
+                printk(KERN_INFO "brightctl: Found backlight device at %s\n", backlight_path);
+                filp_close(dir, NULL);
+                path_put(&path);
+                return 0;
+            }
+        }
+        dirent = dirent->next;
+    }
+
+    filp_close(dir, NULL);
+    path_put(&path);
+    printk(KERN_ERR "brightctl: No valid backlight device found\n");
+    return -ENOENT;
 }
 
 static void adjust_brightness(int increment) {
@@ -211,5 +254,4 @@ module_exit(brightctl_exit);
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Akash");
-MODULE_DESCRIPTION("Kernel-space backlight brightness control (Intel only)");
-
+MODULE_DESCRIPTION("Kernel-space backlight brightness control");

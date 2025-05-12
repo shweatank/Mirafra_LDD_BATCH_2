@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Documents/Akash/Mirafra_LDD_BATCH_2/Project/ind/Video_driver/Kernal_space/video_driver.mod := printf '%s\n'   video_driver.o | awk '!x[$$0]++ { print("/home/mirafra/Documents/Akash/Mirafra_LDD_BATCH_2/Project/ind/Video_driver/Kernal_space/"$$0) }' > /home/mirafra/Documents/Akash/Mirafra_LDD_BATCH_2/Project/ind/Video_driver/Kernal_space/video_driver.mod
