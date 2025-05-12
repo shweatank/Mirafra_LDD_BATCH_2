@@ -54,7 +54,7 @@ int set_supported_format(int fd, __u32 *chosen_fmt) {
         fmt.fmt.pix.pixelformat = try_formats[i];
         if (ioctl(fd, VIDIOC_S_FMT, &fmt) == 0) {
             *chosen_fmt = try_formats[i];
-            printf("✅ Selected format: %s\n", get_format_name(*chosen_fmt));
+            printf("Selected format: %s\n", get_format_name(*chosen_fmt));
             return 0;
         } else {
             fprintf(stderr, "Format %s not supported.\n", get_format_name(try_formats[i]));
@@ -73,7 +73,7 @@ int main() {
 
     __u32 pixel_format;
     if (set_supported_format(fd, &pixel_format) < 0) {
-        fprintf(stderr, "❌ No supported pixel format found.\n");
+        fprintf(stderr, "No supported pixel format found.\n");
         close(fd);
         return 1;
     }
@@ -135,7 +135,7 @@ int main() {
         return 1;
     }
 
-    printf("🎥 Capturing for 10 seconds to file: %s\n", filename);
+    printf("Capturing for 10 seconds to file: %s\n", filename);
     time_t start_time = time(NULL);
 
     while (time(NULL) - start_time < 10) {
@@ -166,8 +166,8 @@ int main() {
     free(buffers);
     close(fd);
 
-    printf("✅ Capture complete. Saved to %s\n", filename);
-    printf("▶️ To play: ffplay %s\n", filename);
+    printf("Capture complete. Saved to %s\n", filename);
+    printf("To play: ffplay %s\n", filename);
     return 0;
 }
 
