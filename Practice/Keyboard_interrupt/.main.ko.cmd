@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/vishnu/Ldd_training/Practice/Keyboard_interrupt/main.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/vishnu/Ldd_training/Practice/Keyboard_interrupt/main.ko /home/mirafra/vishnu/Ldd_training/Practice/Keyboard_interrupt/main.o /home/mirafra/vishnu/Ldd_training/Practice/Keyboard_interrupt/main.mod.o
