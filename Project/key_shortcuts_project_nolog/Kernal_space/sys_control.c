@@ -99,7 +99,6 @@ static int write_sysfs_str(const char *path, const char *value) {
     filp_close(filp, NULL);
     return len > 0 ? 0 : -EIO;
 }
-
 // Update ASCII feedback
 static void update_feedback(void) {
     char *buf = control_state.buffer;
