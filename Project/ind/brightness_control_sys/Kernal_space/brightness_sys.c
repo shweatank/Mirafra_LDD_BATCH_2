@@ -254,4 +254,9 @@ module_exit(brightctl_exit);
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Akash");
+<<<<<<< HEAD
 MODULE_DESCRIPTION("Kernel-space backlight brightness control");
+=======
+MODULE_DESCRIPTION("Kernel-space backlight brightness control (Intel only)");
+
+>>>>>>> c92c17423475066df9f7b63208744b573524089d
