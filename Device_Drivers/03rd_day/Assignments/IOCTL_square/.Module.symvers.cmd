@@ -1,1 +1,0 @@
-savedcmd_/home/mirafra/vishnu/Ldd_training/Device_Drivers/3rd_day/Assignments/IOCTL_square/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/vishnu/Ldd_training/Device_Drivers/3rd_day/Assignments/IOCTL_square/Module.symvers -T /home/mirafra/vishnu/Ldd_training/Device_Drivers/3rd_day/Assignments/IOCTL_square/modules.order -i Module.symvers -e 

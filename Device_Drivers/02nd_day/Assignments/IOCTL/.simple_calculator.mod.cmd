@@ -1,1 +1,0 @@
-savedcmd_/home/mirafra/vishnu/Ldd_training/Device_Drivers/2nd_day/Class/IOCTL/simple_calculator.mod := printf '%s\n'   simple_calculator.o | awk '!x[$$0]++ { print("/home/mirafra/vishnu/Ldd_training/Device_Drivers/2nd_day/Class/IOCTL/"$$0) }' > /home/mirafra/vishnu/Ldd_training/Device_Drivers/2nd_day/Class/IOCTL/simple_calculator.mod
