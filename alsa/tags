@@ -1,0 +1,70 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/mirafra/ganga/ddclas/alsa/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+BUF_SIZE	audioDriver.c	/^#define BUF_SIZE /;"	d	file:
+CARD_NAME	pcmdriver.c	/^#define CARD_NAME /;"	d	file:
+CHANNELS	recordvoice/recordaudioUser.c	/^#define CHANNELS /;"	d	file:
+DEVICE_NAME	audioDriver.c	/^#define DEVICE_NAME /;"	d	file:
+FORMAT	recordvoice/recordaudioUser.c	/^#define FORMAT /;"	d	file:
+FRAMES	play_audio_non.c	/^#define FRAMES /;"	d	file:
+FRAMES_PER_BUFFER	recordvoice/recordaudioUser.c	/^#define FRAMES_PER_BUFFER /;"	d	file:
+INCLUDE_VERMAGIC	audioDriver.mod.c	/^#define INCLUDE_VERMAGIC$/;"	d	file:
+KDIR	Makefile	/^KDIR := \/lib\/modules\/$(shell uname -r)\/build$/;"	m
+MY_DRIVER_NAME	recordvoice/recordAudio.c	/^#define MY_DRIVER_NAME /;"	d	file:
+PCM_DEVICE	recordvoice/recordaudioUser.c	/^#define PCM_DEVICE /;"	d	file:
+PCM_NAME	pcmdriver.c	/^#define PCM_NAME /;"	d	file:
+PWD	Makefile	/^PWD := $(shell pwd)$/;"	m
+RECORD_SECONDS	recordvoice/recordaudioUser.c	/^#define RECORD_SECONDS /;"	d	file:
+SAMPLE_RATE	play_audio_non.c	/^#define SAMPLE_RATE /;"	d	file:
+SAMPLE_RATE	recordvoice/recordaudioUser.c	/^#define SAMPLE_RATE /;"	d	file:
+____versions	audioDriver.mod.c	/^static const char ____versions[]$/;"	v	typeref:typename:const char[]__used __section ("__versions")	file:
+all	Makefile	/^all:$/;"	t
+all	recordvoice/Makefile	/^all:$/;"	t
+audio_buf	audioDriver.c	/^static char audio_buf[BUF_SIZE];$/;"	v	typeref:typename:char[]	file:
+audio_exit	audioDriver.c	/^static void __exit audio_exit(void) {$/;"	f	typeref:typename:void __exit	file:
+audio_init	audioDriver.c	/^static int __init audio_init(void) {$/;"	f	typeref:typename:int __init	file:
+audio_open	audioDriver.c	/^static int audio_open(struct inode *inode, struct file *file) {$/;"	f	typeref:typename:int	file:
+audio_read	audioDriver.c	/^static ssize_t audio_read(struct file *filp, char __user *buf, size_t len, loff_t *off) {$/;"	f	typeref:typename:ssize_t	file:
+audio_release	audioDriver.c	/^static int audio_release(struct inode *inode, struct file *file) {$/;"	f	typeref:typename:int	file:
+audio_write	audioDriver.c	/^static ssize_t audio_write(struct file *filp, const char __user *buf, size_t len, loff_t *off) {$/;"	f	typeref:typename:ssize_t	file:
+card	pcmdriver.c	/^static struct snd_card *card;$/;"	v	typeref:struct:snd_card *	file:
+clean	Makefile	/^clean:$/;"	t
+clean	recordvoice/Makefile	/^clean:$/;"	t
+dummy_alsa_exit	pcmdriver.c	/^static void __exit dummy_alsa_exit(void)$/;"	f	typeref:typename:void __exit	file:
+dummy_alsa_init	pcmdriver.c	/^static int __init dummy_alsa_init(void)$/;"	f	typeref:typename:int __init	file:
+dummy_pcm_close	pcmdriver.c	/^static int dummy_pcm_close(struct snd_pcm_substream *substream)$/;"	f	typeref:typename:int	file:
+dummy_pcm_hw_free	pcmdriver.c	/^static int dummy_pcm_hw_free(struct snd_pcm_substream *substream)$/;"	f	typeref:typename:int	file:
+dummy_pcm_hw_params	pcmdriver.c	/^static int dummy_pcm_hw_params(struct snd_pcm_substream *substream,$/;"	f	typeref:typename:int	file:
+dummy_pcm_open	pcmdriver.c	/^static int dummy_pcm_open(struct snd_pcm_substream *substream)$/;"	f	typeref:typename:int	file:
+dummy_pcm_ops	pcmdriver.c	/^static struct snd_pcm_ops dummy_pcm_ops = {$/;"	v	typeref:struct:snd_pcm_ops	file:
+dummy_pcm_pointer	pcmdriver.c	/^static snd_pcm_uframes_t dummy_pcm_pointer(struct snd_pcm_substream *substream)$/;"	f	typeref:typename:snd_pcm_uframes_t	file:
+dummy_pcm_prepare	pcmdriver.c	/^static int dummy_pcm_prepare(struct snd_pcm_substream *substream)$/;"	f	typeref:typename:int	file:
+dummy_pcm_trigger	pcmdriver.c	/^static int dummy_pcm_trigger(struct snd_pcm_substream *substream, int cmd)$/;"	f	typeref:typename:int	file:
+fops	audioDriver.c	/^static const struct file_operations fops = {$/;"	v	typeref:typename:const struct file_operations	file:
+main	play_audio.c	/^int main() {$/;"	f	typeref:typename:int
+main	play_audio_non.c	/^int main() {$/;"	f	typeref:typename:int
+main	recordvoice/recordaudioUser.c	/^int main() {$/;"	f	typeref:typename:int
+major	audioDriver.c	/^static int major;$/;"	v	typeref:typename:int	file:
+my_driver_exit	recordvoice/recordAudio.c	/^static void __exit my_driver_exit(void)$/;"	f	typeref:typename:void __exit	file:
+my_driver_init	recordvoice/recordAudio.c	/^static int __init my_driver_init(void)$/;"	f	typeref:typename:int __init	file:
+my_pcm_close	recordvoice/recordAudio.c	/^static int my_pcm_close(struct snd_pcm_substream *substream)$/;"	f	typeref:typename:int	file:
+my_pcm_hardware	recordvoice/recordAudio.c	/^static struct snd_pcm_hardware my_pcm_hardware = {$/;"	v	typeref:struct:snd_pcm_hardware	file:
+my_pcm_hw_free	recordvoice/recordAudio.c	/^static int my_pcm_hw_free(struct snd_pcm_substream *substream)$/;"	f	typeref:typename:int	file:
+my_pcm_hw_params	recordvoice/recordAudio.c	/^static int my_pcm_hw_params(struct snd_pcm_substream *substream,$/;"	f	typeref:typename:int	file:
+my_pcm_new	recordvoice/recordAudio.c	/^static int my_pcm_new(struct snd_card *card, struct snd_pcm **pcm)$/;"	f	typeref:typename:int	file:
+my_pcm_open	recordvoice/recordAudio.c	/^static int my_pcm_open(struct snd_pcm_substream *substream)$/;"	f	typeref:typename:int	file:
+my_pcm_ops	recordvoice/recordAudio.c	/^static struct snd_pcm_ops my_pcm_ops = {$/;"	v	typeref:struct:snd_pcm_ops	file:
+my_pcm_pointer	recordvoice/recordAudio.c	/^static snd_pcm_uframes_t my_pcm_pointer(struct snd_pcm_substream *substream)$/;"	f	typeref:typename:snd_pcm_uframes_t	file:
+my_pcm_prepare	recordvoice/recordAudio.c	/^static int my_pcm_prepare(struct snd_pcm_substream *substream)$/;"	f	typeref:typename:int	file:
+my_pcm_trigger	recordvoice/recordAudio.c	/^static int my_pcm_trigger(struct snd_pcm_substream *substream, int cmd)$/;"	f	typeref:typename:int	file:
+pcm	pcmdriver.c	/^static struct snd_pcm *pcm;$/;"	v	typeref:struct:snd_pcm *	file:
+read_ptr	audioDriver.c	/^static int read_ptr = 0, write_ptr = 0;$/;"	v	typeref:typename:int	file:
+write_ptr	audioDriver.c	/^static int read_ptr = 0, write_ptr = 0;$/;"	v	typeref:typename:int	file:
