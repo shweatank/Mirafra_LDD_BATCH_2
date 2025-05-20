@@ -1,0 +1,1 @@
+cmd_/home/user1/Desktop/Akash/i2c_uart/max30100_driver.ko := ld -r -EL  -maarch64elf -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/user1/Desktop/Akash/i2c_uart/max30100_driver.ko /home/user1/Desktop/Akash/i2c_uart/max30100_driver.o /home/user1/Desktop/Akash/i2c_uart/max30100_driver.mod.o;  true

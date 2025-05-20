@@ -1,0 +1,1 @@
+cmd_/home/user1/Desktop/Akash/i2c_uart/max30100_driver.mod := printf '%s\n'   max30100_driver.o | awk '!x[$$0]++ { print("/home/user1/Desktop/Akash/i2c_uart/"$$0) }' > /home/user1/Desktop/Akash/i2c_uart/max30100_driver.mod

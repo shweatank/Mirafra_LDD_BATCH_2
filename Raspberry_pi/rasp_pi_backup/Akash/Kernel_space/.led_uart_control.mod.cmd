@@ -1,0 +1,1 @@
+cmd_/home/user1/Desktop/Akash/Kernel_space/led_uart_control.mod := printf '%s\n'   led_uart_control.o | awk '!x[$$0]++ { print("/home/user1/Desktop/Akash/Kernel_space/"$$0) }' > /home/user1/Desktop/Akash/Kernel_space/led_uart_control.mod

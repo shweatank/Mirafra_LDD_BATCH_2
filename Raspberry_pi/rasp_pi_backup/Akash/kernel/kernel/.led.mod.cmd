@@ -1,0 +1,1 @@
+cmd_/home/user1/Desktop/Akash/kernel/kernel/led.mod := printf '%s\n'   led.o | awk '!x[$$0]++ { print("/home/user1/Desktop/Akash/kernel/kernel/"$$0) }' > /home/user1/Desktop/Akash/kernel/kernel/led.mod
