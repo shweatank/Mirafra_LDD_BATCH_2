@@ -1,0 +1,1 @@
+cmd_/home/user1/Desktop/demo/dma_gpio_user_system/system.ko := ld -r -EL  -maarch64elf -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/user1/Desktop/demo/dma_gpio_user_system/system.ko /home/user1/Desktop/demo/dma_gpio_user_system/system.o /home/user1/Desktop/demo/dma_gpio_user_system/system.mod.o;  true

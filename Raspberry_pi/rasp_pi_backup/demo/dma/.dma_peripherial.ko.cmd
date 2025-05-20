@@ -1,0 +1,1 @@
+cmd_/home/user1/Desktop/demo/dma/dma_peripherial.ko := ld -r -EL  -maarch64elf -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/user1/Desktop/demo/dma/dma_peripherial.ko /home/user1/Desktop/demo/dma/dma_peripherial.o /home/user1/Desktop/demo/dma/dma_peripherial.mod.o;  true

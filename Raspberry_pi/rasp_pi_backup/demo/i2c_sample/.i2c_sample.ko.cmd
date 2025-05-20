@@ -1,0 +1,1 @@
+cmd_/home/user1/Desktop/demo/i2c_sample/i2c_sample.ko := ld -r -EL  -maarch64elf -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/user1/Desktop/demo/i2c_sample/i2c_sample.ko /home/user1/Desktop/demo/i2c_sample/i2c_sample.o /home/user1/Desktop/demo/i2c_sample/i2c_sample.mod.o;  true

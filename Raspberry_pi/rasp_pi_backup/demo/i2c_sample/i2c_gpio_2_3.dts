@@ -1,0 +1,5 @@
+i2c_sensor@48 {
+    compatible = "i2c_sensor";
+    reg = <0x57>;
+};
+
