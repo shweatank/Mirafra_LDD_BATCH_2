@@ -1,0 +1,16 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2711";
+
+    fragment@0 {
+        target-path = "/";
+        __overlay__ {
+            rpi_uart: rpi-uart {
+                compatible = "rpi,uart-driver";
+                status = "okay";
+            };
+        };
+    };
+};
