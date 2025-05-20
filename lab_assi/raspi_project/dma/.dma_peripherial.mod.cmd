@@ -1,0 +1,1 @@
+cmd_/home/user1/Desktop/demo/dma/dma_peripherial.mod := printf '%s\n'   dma_peripherial.o | awk '!x[$$0]++ { print("/home/user1/Desktop/demo/dma/"$$0) }' > /home/user1/Desktop/demo/dma/dma_peripherial.mod

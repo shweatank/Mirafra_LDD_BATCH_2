@@ -1,0 +1,1 @@
+cmd_/home/user1/Desktop/demo/i2c_sample/Module.symvers :=  sed 's/ko$$/o/'  /home/user1/Desktop/demo/i2c_sample/modules.order | scripts/mod/modpost -m -a    -o /home/user1/Desktop/demo/i2c_sample/Module.symvers -e -i Module.symvers -T - 

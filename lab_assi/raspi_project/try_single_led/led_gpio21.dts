@@ -1,0 +1,32 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2711";
+
+    fragment@0 {
+        target = <&gpio>;
+        __overlay__ {
+            led_pins: led_pins {
+                brcm,pins = <21>;
+                brcm,function = <1>; // 1 = output
+                brcm,pull = <0>;     // 0 = none
+            };
+        };
+    };
+
+    fragment@1 {
+        target-path = "/";
+        __overlay__ {
+            leds {
+                compatible = "gpio-leds";
+
+                led0: led_0 {
+                    label = "led0";
+                    gpios = <&gpio 21 0>; // GPIO21, active high
+                    default-state = "off";
+                };
+            };
+        };
+    };
+};

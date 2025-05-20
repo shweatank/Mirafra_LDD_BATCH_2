@@ -1,0 +1,1 @@
+cmd_/home/user1/Desktop/demo/i2c_sample/modules.order := {   echo /home/user1/Desktop/demo/i2c_sample/max30102.ko; :; } > /home/user1/Desktop/demo/i2c_sample/modules.order

@@ -1,0 +1,1 @@
+cmd_/home/user1/Desktop/demo/reg_address/gpio_led.ko := ld -r -EL  -maarch64elf -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/user1/Desktop/demo/reg_address/gpio_led.ko /home/user1/Desktop/demo/reg_address/gpio_led.o /home/user1/Desktop/demo/reg_address/gpio_led.mod.o;  true

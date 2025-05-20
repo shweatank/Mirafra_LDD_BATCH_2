@@ -1,0 +1,25 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2835";  // For Raspberry Pi; change for other boards
+
+    fragment@0 {
+        target = <&i2c1>;  // I2C bus; use i2c0 or i2c1 depending on your board
+
+        __overlay__ {
+            #address-cells = <1>;
+            #size-cells = <0>;
+
+            max30102@57 {
+                compatible = "maxim,max30102";
+                reg = <0x57>;  // I2C address for MAX30102
+                status = "okay";
+                interrupt-parent = <&gpio>;
+                interrupts = <4 2>;  // GPIO 4, falling edge (change based on your wiring)
+                // Optional: custom properties for your driver
+            };
+        };
+    };
+};
+
