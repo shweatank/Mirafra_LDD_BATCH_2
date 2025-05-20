@@ -6,7 +6,7 @@
 #include <unistd.h>
 
 int main() {
-    const char *port = "/dev/ttyUSB0";
+    const char *port = "/dev/ttyUSB1";
     int serial_port = open(port, O_RDONLY | O_NOCTTY);
     if (serial_port < 0) {
         perror("Error opening /dev/ttyUSB0");
