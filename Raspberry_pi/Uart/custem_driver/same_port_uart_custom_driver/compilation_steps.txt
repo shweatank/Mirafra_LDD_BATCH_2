@@ -1,0 +1,22 @@
+config.txt:-
+
+enable_uart=1
+
+dtoverlay=disable-bt
+
+dtoverlay=rpi-uart
+
+
+
+
+
+
+
+dtc -@ -I dts -O dtb -o led-gpio21.dtbo led-gpio21-overlay.dts
+
+sudo cp rpi-uart.dtbo /boot/overlays/
+
+insert mod
+then use this to verify ls /dev/rpi_uart
+
+sudo chmod 660 /dev/rpi_uart sudo chown root:dialout /dev/rpi_uart

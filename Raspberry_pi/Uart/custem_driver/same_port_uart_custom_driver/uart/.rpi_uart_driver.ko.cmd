@@ -1,0 +1,1 @@
+cmd_/home/user1/Desktop/uart/rpi_uart_driver.ko := ld -r -EL  -maarch64elf -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/user1/Desktop/uart/rpi_uart_driver.ko /home/user1/Desktop/uart/rpi_uart_driver.o /home/user1/Desktop/uart/rpi_uart_driver.mod.o;  true

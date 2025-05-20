@@ -1,0 +1,15 @@
+sudo apt update
+sudo apt install device-tree-compiler
+
+
+dtc -@ -I dts -O dtb -o led-gpio21.dtbo led-gpio21-overlay.dts
+sudo cp led-gpio21.dtbo /boot/overlays/
+/boot/config.txt , dtoverlay=led-gpio21
+sudo reboot
+cd /sys/class/leds/led0
+echo timer > trigger
+echo 1000 > delay_on
+echo 1000 > delay_off
+echo none > trigger
+echo 1 > brightness   # Turn on
+echo 0 > brightness   # Turn off

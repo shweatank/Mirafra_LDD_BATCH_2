@@ -1,0 +1,17 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2711";
+
+    fragment@0 {
+        target-path = "/";
+        __overlay__ {
+            custom_uart: custom-uart {
+                compatible = "rpi,custom-uart";
+                reg = <0xFE201000 0x1000>;
+                status = "okay";
+            };
+        };
+    };
+};
