@@ -1,1 +1,0 @@
-cmd_/home/user1/Desktop/demo/chr_driver/chr_dri.ko := ld -r -EL  -maarch64elf -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/user1/Desktop/demo/chr_driver/chr_dri.ko /home/user1/Desktop/demo/chr_driver/chr_dri.o /home/user1/Desktop/demo/chr_driver/chr_dri.mod.o;  true

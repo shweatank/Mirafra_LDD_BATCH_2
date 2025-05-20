@@ -1,1 +1,0 @@
-cmd_/home/user1/Desktop/demo/multiple_led/linux_code.ko := ld -r -EL  -maarch64elf -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/user1/Desktop/demo/multiple_led/linux_code.ko /home/user1/Desktop/demo/multiple_led/linux_code.o /home/user1/Desktop/demo/multiple_led/linux_code.mod.o;  true
