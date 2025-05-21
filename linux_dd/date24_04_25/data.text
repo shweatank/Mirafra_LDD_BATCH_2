@@ -1,0 +1,8 @@
+#define MY_IOCTL_CMD _IOW('a', 1, int)
+Here:
+
+'a': This character represents the magic number to avoid conflicts with other IOCTL commands.
+
+1: This is the command number, which identifies a specific operation.
+
+int: The type of the argument passed to the driver. _IOW means we are writing data from user space to the kernel.

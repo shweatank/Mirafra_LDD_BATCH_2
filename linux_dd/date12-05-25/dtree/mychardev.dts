@@ -1,0 +1,9 @@
+/dts-v1/;
+/ {
+    compatible = "x86-generic";
+
+    mychardev {
+        label = "TechDhabaCharDevice";
+        status = "okay";
+    };
+};
