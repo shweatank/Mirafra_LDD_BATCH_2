@@ -261,5 +261,5 @@ module_init(rpi_uart_module_init);
 module_exit(rpi_uart_module_exit);
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Grok");
+MODULE_AUTHOR("Akash");
 MODULE_DESCRIPTION("Custom UART driver for Raspberry Pi");
