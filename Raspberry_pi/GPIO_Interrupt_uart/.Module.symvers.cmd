@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Documents/git/Mirafra_LDD_BATCH_2/Raspberry_pi/GPIO_Interrupt_uart/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/Documents/git/Mirafra_LDD_BATCH_2/Raspberry_pi/GPIO_Interrupt_uart/Module.symvers -T /home/mirafra/Documents/git/Mirafra_LDD_BATCH_2/Raspberry_pi/GPIO_Interrupt_uart/modules.order -i Module.symvers -e 
