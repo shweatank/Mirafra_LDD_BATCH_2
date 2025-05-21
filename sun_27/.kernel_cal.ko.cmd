@@ -1,1 +1,0 @@
-cmd_/home/mirafra/git/Mirafra_LDD_BATCH_2/sun_27/kernel_cal.ko := ld -r  -m elf_x86_64 -z noexecstack   --build-id=sha1  -T scripts/module.lds -o /home/mirafra/git/Mirafra_LDD_BATCH_2/sun_27/kernel_cal.ko /home/mirafra/git/Mirafra_LDD_BATCH_2/sun_27/kernel_cal.o /home/mirafra/git/Mirafra_LDD_BATCH_2/sun_27/kernel_cal.mod.o;  true

@@ -1,0 +1,1 @@
+cmd_/home/mirafra/git/Mirafra_LDD_BATCH_2/day11/Module.symvers := sed 's/\.ko$$/\.o/' /home/mirafra/git/Mirafra_LDD_BATCH_2/day11/modules.order | scripts/mod/modpost -m -a  -o /home/mirafra/git/Mirafra_LDD_BATCH_2/day11/Module.symvers -e -i Module.symvers   -T -

@@ -1,1 +1,0 @@
-cmd_/home/mirafra/git/Mirafra_LDD_BATCH_2/sun_27/kernel_cal.mod := { echo  /home/mirafra/git/Mirafra_LDD_BATCH_2/sun_27/kernel_cal.o;  echo; } > /home/mirafra/git/Mirafra_LDD_BATCH_2/sun_27/kernel_cal.mod

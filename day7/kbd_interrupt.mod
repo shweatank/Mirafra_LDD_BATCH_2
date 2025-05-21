@@ -1,2 +1,0 @@
-/home/mirafra/git/Mirafra_LDD_BATCH_2/day7/kbd_interrupt.o
-

@@ -1,0 +1,1 @@
+cmd_/home/mirafra/git/Mirafra_LDD_BATCH_2/day11/myfs.ko := ld -r  -m elf_x86_64 -z noexecstack   --build-id=sha1  -T scripts/module.lds -o /home/mirafra/git/Mirafra_LDD_BATCH_2/day11/myfs.ko /home/mirafra/git/Mirafra_LDD_BATCH_2/day11/myfs.o /home/mirafra/git/Mirafra_LDD_BATCH_2/day11/myfs.mod.o;  true

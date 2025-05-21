@@ -1,2 +1,0 @@
-/home/mirafra/git/Mirafra_LDD_BATCH_2/sun_27/kernel_cal.o
-
