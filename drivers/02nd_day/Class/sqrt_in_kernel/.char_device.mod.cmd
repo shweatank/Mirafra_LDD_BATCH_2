@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/vishnu/Ldd_training/Device_Drivers/2nd_day/Class/sqrt_in_kernel/char_device.mod := printf '%s\n'   char_device.o | awk '!x[$$0]++ { print("/home/mirafra/vishnu/Ldd_training/Device_Drivers/2nd_day/Class/sqrt_in_kernel/"$$0) }' > /home/mirafra/vishnu/Ldd_training/Device_Drivers/2nd_day/Class/sqrt_in_kernel/char_device.mod

@@ -1,0 +1,472 @@
+Your request pertains to the `v4l2_record_play.c` program, which is a user-space C program that uses the **Video4Linux2 (V4L2)** API to record a 10-second video from a webcam (`/dev/video0`) and play it back using `ffplay`. You’ve asked for:
+
+1. A **list of user-space APIs** used in the program that invoke **kernel-space APIs**, along with the specific kernel APIs invoked and the function/purpose of each user-space API.
+2. An **explanation of the program’s flow**.
+3. A **block-by-block explanation** of what the code is doing.
+
+This response will address all three parts comprehensively, leveraging your prior context (e.g., ALSA audio code, framebuffer driver, and kernel interaction queries) to ensure clarity and relevance. I’ll focus on the V4L2 program, mapping user-space APIs to kernel-space counterparts, detailing the program’s execution flow, and breaking down each code block’s purpose.
+
+---
+
+### 1. List of User-Space APIs Invoking Kernel APIs
+
+The `v4l2_record_play.c` program uses **user-space APIs** (primarily V4L2 ioctls, system calls, and C library functions) that interact with the Linux kernel. The V4L2 APIs are implemented as `ioctl` system calls with specific commands (e.g., `VIDIOC_QUERYCAP`), which trigger kernel-space functions in the V4L2 core (`drivers/media/v4l2-core/`) and the device-specific driver (e.g., `uvcvideo` for USB webcams). Below is a complete list of user-space APIs in the program that invoke kernel-space APIs, their purposes, and the corresponding kernel-space functions.
+
+#### User-Space APIs and Kernel-Space Mappings
+
+| **User-Space API** | **Purpose in `v4l2_record_play.c`** | **Kernel-Space API/Mechanism Invoked** | **Kernel Driver/Component** | **Function of User-Space API** |
+|---------------------|-------------------------------------|----------------------------------------|-----------------------------|---------------------------------|
+| **`open`**         | Opens the video device (`/dev/video0`). | `do_sys_open` → `v4l2_fops->open` (`uvc_v4l2_open`) | VFS, `uvcvideo` | Initiates access to the webcam, creating a file descriptor for ioctls. Allocates device context in kernel. |
+| **`close`**        | Closes the video device. | `do_sys_close` → `v4l2_fops->release` (`uvc_v4l2_release`) | VFS, `uvcvideo` | Releases the device, freeing kernel resources (e.g., USB context). |
+| **`ioctl(VIDIOC_QUERYCAP)`** | Checks device capabilities. | `v4l2_ioctl` → `v4l2_ioctl_ops->vidioc_querycap` (`uvc_v4l2_querycap`) | V4L2 core, `uvcvideo` | Verifies if the device supports video capture, retrieving driver info (e.g., name, capabilities). |
+| **`ioctl(VIDIOC_S_FMT)`** | Sets video format (640x480, YUYV). | `v4l2_ioctl` → `v4l2_ioctl_ops->vidioc_s_fmt_vid_cap` (`uvc_v4l2_set_format`) | V4L2 core, `uvcvideo` | Configures resolution and pixel format, sending USB control messages to the webcam. |
+| **`ioctl(VIDIOC_S_PARM)`** | Sets frame rate (30 fps). | `v4l2_ioctl` → `v4l2_ioctl_ops->vidioc_s_parm` (`uvc_v4l2_set_streamparm`) | V4L2 core, `uvcvideo` | Adjusts streaming parameters (frame rate) via USB control messages. |
+| **`ioctl(VIDIOC_REQBUFS)`** | Requests 4 memory-mapped buffers. | `v4l2_ioctl` → `v4l2_ioctl_ops->vidioc_reqbufs` (`vb2_ioctl_reqbufs`) | V4L2 core (`vb2`) | Allocates kernel buffers for video streaming, preparing the video buffer queue. |
+| **`ioctl(VIDIOC_QUERYBUF)`** | Queries buffer details (size, offset). | `v4l2_ioctl` → `v4l2_ioctl_ops->vidioc_querybuf` (`vb2_ioctl_querybuf`) | V4L2 core (`vb2`) | Retrieves buffer information for memory mapping, enabling user-space access. |
+| **`ioctl(VIDIOC_QBUF)`** | Queues buffers for capture. | `v4l2_ioctl` → `v4l2_ioctl_ops->vidioc_qbuf` (`vb2_ioctl_qbuf`) | V4L2 core (`vb2`), `uvcvideo` | Adds buffers to the kernel’s capture queue, preparing them for frame data. |
+| **`ioctl(VIDIOC_DQBUF)`** | Dequeues filled buffers. | `v4l2_ioctl` → `v4l2_ioctl_ops->vidioc_dqbuf` (`vb2_ioctl_dqbuf`) | V4L2 core (`vb2`), `uvcvideo` | Retrieves a buffer containing a captured frame, making data available to user space. |
+| **`ioctl(VIDIOC_STREAMON)`** | Starts video streaming. | `v4l2_ioctl` → `v4l2_ioctl_ops->vidioc_streamon` (`vb2_ioctl_streamon`, `uvc_queue_streamon`) | V4L2 core (`vb2`), `uvcvideo` | Initiates USB video streaming, scheduling URBs (USB Request Blocks). |
+| **`ioctl(VIDIOC_STREAMOFF)`** | Stops video streaming. | `v4l2_ioctl` → `v4l2_ioctl_ops->vidioc_streamoff` (`vb2_ioctl_streamoff`, `uvc_queue_streamoff`) | V4L2 core (`vb2`), `uvcvideo` | Halts USB streaming, canceling URBs and clearing buffers. |
+| **`mmap`**         | Maps kernel buffers to user space. | `do_mmap` → `v4l2_fops->mmap` (`vb2_fop_mmap`) | Kernel MM, V4L2 core (`vb2`) | Maps video buffers for direct access, allowing frame data reads. |
+| **`munmap`**       | Unmaps buffers from user space. | `do_munmap` | Kernel MM | Releases buffer mappings, freeing user-space access. |
+| **`clock_gettime`** | Gets monotonic time for timing. | `do_clock_gettime` (`ktime_get_ts64`) | Kernel timekeeping | Measures elapsed time to control the 10-second recording duration. |
+| **`fopen`**        | Opens the output file (`output.yuv`). | `do_sys_open` | VFS, filesystem (e.g., ext4) | Creates/opens a file for writing video frames. |
+| **`fwrite`**       | Writes frame data to the file. | `do_sys_write` | VFS, filesystem | Saves captured video frames to `output.yuv`. |
+| **`fclose`**       | Closes the output file. | `do_sys_close` | VFS, filesystem | Finalizes file writing and releases file resources. |
+| **`system`**       | Runs `ffplay` to play the video. | `sys_fork`, `sys_execve` | Kernel process management | Spawns a process to execute `ffplay`, which handles video playback. |
+
+#### User-Space APIs Without Kernel Interaction
+These are C library functions that operate purely in user space:
+
+| **User-Space API** | **Purpose** | **Location in Code** |
+|---------------------|-------------|----------------------|
+| `printf`           | Prints status messages. | `main`, `play_video` |
+| `fprintf`          | Prints error messages. | Error handling (e.g., `init_device`) |
+| `perror`           | Prints system error messages. | Error handling (e.g., `open_device`) |
+| `memset`           | Initializes structures to zero. | `init_device`, `start_capturing`, `record_video` |
+| `snprintf`         | Formats the `ffplay` command. | `play_video` |
+| `calloc`           | Allocates memory for buffer structures. | `init_device` |
+| `free`             | Frees allocated memory. | `uninit_device` |
+
+---
+
+### 2. Explanation of Program Flow
+
+The program’s flow is a linear sequence of operations to record a 10-second video from a webcam and play it back. It follows a typical V4L2 capture workflow, similar to the ALSA audio capture in `alsa_our_audio_15sec.c` but for video. Here’s the high-level flow:
+
+1. **Initialization**:
+   - Opens the video device (`/dev/video0`).
+   - Configures the device for 640x480 resolution, YUYV pixel format, and 30 fps.
+   - Allocates and maps 4 memory-mapped buffers for streaming.
+
+2. **Capture Start**:
+   - Queues buffers and starts video streaming.
+
+3. **Recording**:
+   - Captures frames for 10 seconds, saving each frame to `output.yuv`.
+   - Uses a timing loop to ensure precise duration.
+
+4. **Capture Stop**:
+   - Stops streaming and finalizes the output file.
+
+5. **Playback**:
+   - Executes `ffplay` to play the recorded YUYV video.
+
+6. **Cleanup**:
+   - Unmaps buffers, frees memory, and closes the device.
+
+**Visual Flow**:
+```
+Start
+  |
+  v
+Open Device (/dev/video0)
+  |
+  v
+Initialize Device (640x480, YUYV, 30 fps, 4 buffers)
+  |
+  v
+Start Capturing (Queue buffers, VIDIOC_STREAMON)
+  |
+  v
+Record Video (10 seconds, save to output.yuv)
+  |
+  v
+Stop Capturing (VIDIOC_STREAMOFF)
+  |
+  v
+Play Video (ffplay output.yuv)
+  |
+  v
+Cleanup (Unmap buffers, close device)
+  |
+  v
+Exit
+```
+
+---
+
+### 3. Block-by-Block Explanation of the Code
+
+Below, I’ll break down the code into functional blocks, explaining what each block does, its purpose, and how it contributes to the program’s goal of recording and playing a 10-second video.
+
+#### Block 1: Headers and Macros
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <sys/ioctl.h>
+#include <sys/mman.h>
+#include <sys/time.h>
+#include <linux/videodev2.h>
+#include <unistd.h>
+#include <time.h>
+
+#define VIDEO_DEVICE "/dev/video0"
+#define OUTPUT_FILE "output.yuv"
+#define RECORD_SECONDS 10
+#define FRAME_WIDTH 640
+#define FRAME_HEIGHT 480
+#define FRAME_RATE 30
+```
+- **What It Does**: Includes necessary headers and defines constants.
+- **Purpose**:
+  - Headers provide V4L2 APIs (`linux/videodev2.h`), system calls (`sys/ioctl.h`, `sys/mman.h`), and C library functions (`stdio.h`, `stdlib.h`).
+  - Macros set the device (`/dev/video0`), output file (`output.yuv`), recording duration (10 seconds), resolution (640x480), and frame rate (30 fps).
+- **Role**: Sets up the environment for V4L2 operations and defines program parameters.
+
+#### Block 2: Data Structures and Global Variables
+```c
+struct buffer {
+    void *start;
+    size_t length;
+};
+
+static int fd = -1;
+static struct buffer *buffers = NULL;
+static unsigned int n_buffers = 0;
+```
+- **What It Does**: Defines a structure to store buffer information and declares global variables.
+- **Purpose**:
+  - `struct buffer`: Holds the memory address (`start`) and size (`length`) of each V4L2 buffer.
+  - `fd`: File descriptor for the video device.
+  - `buffers`: Array of buffer structures for memory-mapped buffers.
+  - `n_buffers`: Number of allocated buffers.
+- **Role**: Manages state for device access and buffer management.
+
+#### Block 3: Timing Function
+```c
+double get_time_seconds() {
+    struct timespec ts;
+    clock_gettime(CLOCK_MONOTONIC, &ts);
+    return ts.tv_sec + ts.tv_nsec / 1e9;
+}
+```
+- **What It Does**: Returns the current time in seconds using a monotonic clock.
+- **Purpose**: Provides precise timing for the 10-second recording loop.
+- **Role**: Ensures the `record_video` function captures exactly 10 seconds of video.
+- **Kernel Interaction**: Calls `clock_gettime`, which invokes `do_clock_gettime` in the kernel’s timekeeping subsystem.
+
+#### Block 4: Open Device
+```c
+void open_device() {
+    fd = open(VIDEO_DEVICE, O_RDWR);
+    if (fd == -1) {
+        perror("Failed to open video device");
+        exit(EXIT_FAILURE);
+    }
+}
+```
+- **What It Does**: Opens the video device (`/dev/video0`) in read-write mode.
+- **Purpose**: Establishes a connection to the webcam, creating a file descriptor for ioctls.
+- **Role**: First step in accessing the V4L2 device.
+- **Kernel Interaction**: `open` invokes `do_sys_open`, which calls `uvc_v4l2_open` in the `uvcvideo` driver to initialize the device context.
+
+#### Block 5: Initialize Device
+```c
+void init_device() {
+    struct v4l2_capability cap;
+    struct v4l2_format fmt;
+    struct v4l2_requestbuffers req;
+    struct v4l2_streamparm parm;
+
+    // Check device capabilities
+    if (ioctl(fd, VIDIOC_QUERYCAP, &cap) == -1) {
+        perror("Failed to query capabilities");
+        exit(EXIT_FAILURE);
+    }
+    if (!(cap.capabilities & V4L2_CAP_VIDEO_CAPTURE)) {
+        fprintf(stderr, "Device does not support video capture\n");
+        exit(EXIT_FAILURE);
+    }
+
+    // Set video format (YUYV, 640x480)
+    memset(&fmt, 0, sizeof(fmt));
+    fmt.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+    fmt.fmt.pix.width = FRAME_WIDTH;
+    fmt.fmt.pix.height = FRAME_HEIGHT;
+    fmt.fmt.pix.pixelformat = V4L2_PIX_FMT_YUYV;
+    fmt.fmt.pix.field = V4L2_FIELD_ANY;
+    if (ioctl(fd, VIDIOC_S_FMT, &fmt) == -1) {
+        perror("Failed to set format");
+        exit(EXIT_FAILURE);
+    }
+
+    // Set frame rate (30 fps)
+    memset(&parm, 0, sizeof(parm));
+    parm.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+    parm.parm.capture.timeperframe.numerator = 1;
+    parm.parm.capture.timeperframe.denominator = FRAME_RATE;
+    if (ioctl(fd, VIDIOC_S_PARM, &parm) == -1) {
+        perror("Failed to set frame rate");
+        exit(EXIT_FAILURE);
+    }
+
+    // Request buffers
+    memset(&req, 0, sizeof(req));
+    req.count = 4;
+    req.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+    req.memory = V4L2_MEMORY_MMAP;
+    if (ioctl(fd, VIDIOC_REQBUFS, &req) == -1) {
+        perror("Failed to request buffers");
+        exit(EXIT_FAILURE);
+    }
+    if (req.count < 2) {
+        fprintf(stderr, "Insufficient buffer memory\n");
+        exit(EXIT_FAILURE);
+    }
+
+    // Allocate buffers
+    buffers = calloc(req.count, sizeof(*buffers));
+    if (!buffers) {
+        fprintf(stderr, "Out of memory\n");
+        exit(EXIT_FAILURE);
+    }
+
+    for (n_buffers = 0; n_buffers < req.count; ++n_buffers) {
+        struct v4l2_buffer buf;
+        memset(&buf, 0, sizeof(buf));
+        buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+        buf.memory = V4L2_MEMORY_MMAP;
+        buf.index = n_buffers;
+        if (ioctl(fd, VIDIOC_QUERYBUF, &buf) == -1) {
+            perror("Failed to query buffer");
+            exit(EXIT_FAILURE);
+        }
+
+        buffers[n_buffers].length = buf.length;
+        buffers[n_buffers].start = mmap(NULL, buf.length, PROT_READ | PROT_WRITE,
+                                        MAP_SHARED, fd, buf.m.offset);
+        if (buffers[n_buffers].start == MAP_FAILED) {
+            perror("Failed to mmap buffer");
+            exit(EXIT_FAILURE);
+        }
+    }
+}
+```
+- **What It Does**: Configures the video device for capture.
+- **Purpose**:
+  - Verifies capture capability (`VIDIOC_QUERYCAP`).
+  - Sets 640x480 resolution and YUYV format (`VIDIOC_S_FMT`).
+  - Configures 30 fps (`VIDIOC_S_PARM`).
+  - Requests 4 memory-mapped buffers (`VIDIOC_REQBUFS`).
+  - Queries buffer details and maps them to user space (`VIDIOC_QUERYBUF`, `mmap`).
+- **Role**: Prepares the webcam for streaming video frames.
+- **Kernel Interaction**:
+  - `ioctl(VIDIOC_QUERYCAP)` → `uvc_v4l2_querycap`: Retrieves device info.
+  - `ioctl(VIDIOC_S_FMT)` → `uvc_v4l2_set_format`: Configures hardware format.
+  - `ioctl(VIDIOC_S_PARM)` → `uvc_v4l2_set_streamparm`: Sets frame rate.
+  - `ioctl(VIDIOC_REQBUFS)` → `vb2_ioctl_reqbufs`: Allocates kernel buffers.
+  - `ioctl(VIDIOC_QUERYBUF)` → `vb2_ioctl_querybuf`: Provides buffer details.
+  - `mmap` → `vb2_fop_mmap`: Maps buffers to user space.
+
+#### Block 6: Start Capturing
+```c
+void start_capturing() {
+    for (unsigned int i = 0; i < n_buffers; ++i) {
+        struct v4l2_buffer buf;
+        memset(&buf, 0, sizeof(buf));
+        buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+        buf.memory = V4L2_MEMORY_MMAP;
+        buf.index = i;
+        if (ioctl(fd, VIDIOC_QBUF, &buf) == -1) {
+            perror("Failed to queue buffer");
+            exit(EXIT_FAILURE);
+        }
+    }
+
+    enum v4l2_buf_type type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+    if (ioctl(fd, VIDIOC_STREAMON, &type) == -1) {
+        perror("Failed to start streaming");
+        exit(EXIT_FAILURE);
+    }
+}
+```
+- **What It Does**: Queues buffers and starts video streaming.
+- **Purpose**:
+  - Queues all buffers for capture (`VIDIOC_QBUF`).
+  - Initiates streaming (`VIDIOC_STREAMON`).
+- **Role**: Begins capturing video frames from the webcam.
+- **Kernel Interaction**:
+  - `ioctl(VIDIOC_QBUF)` → `vb2_ioctl_qbuf`: Adds buffers to the capture queue.
+  - `ioctl(VIDIOC_STREAMON)` → `vb2_ioctl_streamon`, `uvc_queue_streamon`: Starts USB streaming with URBs.
+
+#### Block 7: Record Video
+```c
+void record_video() {
+    FILE *out_file = fopen(OUTPUT_FILE, "wb");
+    if (!out_file) {
+        perror("Failed to open output file");
+        exit(EXIT_FAILURE);
+    }
+
+    double start_time = get_time_seconds();
+    while (get_time_seconds() - start_time < RECORD_SECONDS) {
+        struct v4l2_buffer buf;
+        memset(&buf, 0, sizeof(buf));
+        buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+        buf.memory = V4L2_MEMORY_MMAP;
+
+        // Dequeue buffer
+        if (ioctl(fd, VIDIOC_DQBUF, &buf) == -1) {
+            perror("Failed to dequeue buffer");
+            exit(EXIT_FAILURE);
+        }
+
+        // Write frame to file
+        fwrite(buffers[buf.index].start, 1, buf.bytesused, out_file);
+
+        // Requeue buffer
+        if (ioctl(fd, VIDIOC_QBUF, &buf) == -1) {
+            perror("Failed to requeue buffer");
+            exit(EXIT_FAILURE);
+        }
+    }
+
+    fclose(out_file);
+}
+```
+- **What It Does**: Captures video for 10 seconds and saves frames to `output.yuv`.
+- **Purpose**:
+  - Opens the output file.
+  - Loops for 10 seconds, dequeuing filled buffers (`VIDIOC_DQBUF`), writing frames to the file (`fwrite`), and requeuing buffers (`VIDIOC_QBUF`).
+  - Closes the file.
+- **Role**: Records the video data to a raw YUYV file.
+- **Kernel Interaction**:
+  - `fopen` → `do_sys_open`: Opens the file.
+  - `fwrite` → `do_sys_write`: Writes frame data to the filesystem.
+  - `fclose` → `do_sys_close`: Closes the file.
+  - `ioctl(VIDIOC_DQBUF)` → `vb2_ioctl_dqbuf`: Retrieves a filled buffer.
+  - `ioctl(VIDIOC_QBUF)` → `vb2_ioctl_qbuf`: Requeues the buffer.
+  - `get_time_seconds` → `do_clock_gettime`: Tracks recording duration.
+
+#### Block 8: Stop Capturing
+```c
+void stop_capturing() {
+    enum v4l2_buf_type type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+    if (ioctl(fd, VIDIOC_STREAMOFF, &type) == -1) {
+        perror("Failed to stop streaming");
+        exit(EXIT_FAILURE);
+    }
+}
+```
+- **What It Does**: Stops video streaming.
+- **Purpose**: Halts capture, ensuring no more frames are processed.
+- **Role**: Finalizes the recording phase.
+- **Kernel Interaction**: `ioctl(VIDIOC_STREAMOFF)` → `vb2_ioctl_streamoff`, `uvc_queue_streamoff`: Stops USB streaming and clears buffers.
+
+#### Block 9: Play Video
+```c
+void play_video() {
+    char command[256];
+    snprintf(command, sizeof(command), "ffplay -f rawvideo -pixel_format yuyv422 -video_size %dx%d -framerate %d %s",
+             FRAME_WIDTH, FRAME_HEIGHT, FRAME_RATE, OUTPUT_FILE);
+    printf("Playing video with command: %s\n", command);
+    system(command);
+}
+```
+- **What It Does**: Plays the recorded video using `ffplay`.
+- **Purpose**: Formats a command to play `output.yuv` as a raw YUYV video and executes it.
+- **Role**: Provides playback of the captured video.
+- **Kernel Interaction**: `system` → `sys_fork`, `sys_execve`: Spawns a process to run `ffplay`, which may use V4L2 or graphics APIs independently.
+
+#### Block 10: Uninitialize Device
+```c
+void uninit_device() {
+    for (unsigned int i = 0; i < n_buffers; ++i) {
+        if (munmap(buffers[i].start, buffers[i].length) == -1) {
+            perror("Failed to unmap buffer");
+        }
+    }
+    free(buffers);
+}
+```
+- **What It Does**: Unmaps buffers and frees memory.
+- **Purpose**: Releases memory-mapped buffers and the buffer array.
+- **Role**: Cleans up buffer resources.
+- **Kernel Interaction**: `munmap` → `do_munmap`: Removes buffer mappings from user space.
+
+#### Block 11: Close Device
+```c
+void close_device() {
+    if (close(fd) == -1) {
+        perror("Failed to close device");
+    }
+}
+```
+- **What It Does**: Closes the video device.
+- **Purpose**: Finalizes device access, freeing kernel resources.
+- **Role**: Completes cleanup.
+- **Kernel Interaction**: `close` → `uvc_v4l2_release`: Releases device context.
+
+#### Block 12: Main Function
+```c
+int main() {
+    printf("Opening video device...\n");
+    open_device();
+
+    printf("Initializing device...\n");
+    init_device();
+
+    printf("Starting video capture...\n");
+    start_capturing();
+
+    printf("Recording for %d seconds...\n", RECORD_SECONDS);
+    record_video();
+
+    printf("Stopping video capture...\n");
+    stop_capturing();
+
+    printf("Playing recorded video...\n");
+    play_video();
+
+    printf("Cleaning up...\n");
+    uninit_device();
+    close_device();
+
+    printf("Done.\n");
+    return 0;
+}
+```
+- **What It Does**: Orchestrates the program’s execution.
+- **Purpose**: Calls each function in sequence, printing status messages.
+- **Role**: Main entry point, coordinating all operations.
+- **Kernel Interaction**: Indirectly via the called functions’ system calls and ioctls.
+
+---
+
+### Summary
+
+- **What the Code Does**: Records a 10-second video from a webcam (`/dev/video0`) at 640x480, 30 fps in YUYV format, saves it to `output.yuv`, and plays it back using `ffplay`.
+- **User-Space APIs**: Include V4L2 ioctls (`VIDIOC_*`), system calls (`open`, `mmap`, `ioctl`), and C library functions (`fopen`, `fwrite`, `system`). These invoke kernel-space APIs in the V4L2 core (`vb2_*`) and `uvcvideo` driver (`uvc_v4l2_*`).
+- **Program Flow**: Opens device → Configures device → Starts capture → Records 10 seconds → Stops capture → Plays video → Cleans up.
+- **Block-by-Block**: Each block handles a specific task (e.g., device setup, recording, playback), with clear kernel interactions via ioctls and system calls.
+
+If you need further details, want to modify the code (e.g., use MJPEG, add V4L2 playback), or require a kernel-space V4L2 driver instead, please let me know! You can also test the code with:
+```bash
+gcc -o v4l2_record_play v4l2_record_play.c
+./v4l2_record_play
+```
+Ensure a webcam is connected and `ffmpeg` is installed (`sudo apt install ffmpeg`).

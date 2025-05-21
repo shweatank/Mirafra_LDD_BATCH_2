@@ -1,0 +1,28 @@
+development assignment:
+
+Problem Statement: Wait Queue Implementation in a Linux Device Driver
+
+In Linux kernel programming, wait queues are used to put processes to sleep until a specific condition becomes true, helping manage synchronization in concurrent environments. Your task is to implement a basic Linux character device driver that uses a wait queue to block and wake up user-space processes based on a condition set within the kernel.
+
+Objective:
+Write a Linux kernel module that implements a character device. The driver must:
+
+Allow a user-space process to read from the device. If a certain condition is not met (e.g., a flag is unset), the process should sleep on a wait queue.
+
+Another user-space process can write to the device to change the condition (e.g., set the flag), which should wake up any processes waiting on the queue.
+
+Properly handle concurrent access, module initialization, and cleanup.
+
+Requirements:
+Use wait_queue_head_t, wait_event_interruptible() (or similar functions) for putting the process to sleep.
+
+Use wake_up_interruptible() to wake waiting processes.
+
+Implement standard file operations: open, read, write, and release.
+
+Maintain proper synchronization and cleanup in module_exit.
+
+Bonus (Optional):
+Add a timeout to the wait queue sleep.
+
+Support multiple sleeping readers.

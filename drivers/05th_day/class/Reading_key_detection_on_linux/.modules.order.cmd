@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/vishnu/Ldd_training/Device_Drivers/5th_day/class/Reading_key_detection_on_linux/modules.order := {   echo /home/mirafra/vishnu/Ldd_training/Device_Drivers/5th_day/class/Reading_key_detection_on_linux/reading_key_detection.o; :; } > /home/mirafra/vishnu/Ldd_training/Device_Drivers/5th_day/class/Reading_key_detection_on_linux/modules.order

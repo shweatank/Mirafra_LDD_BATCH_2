@@ -1,0 +1,7 @@
+gcc alsa_video_rec.c -o alsa_video_rec    //compile the code 
+ffplay -f rawvideo -pixel_format yuyv422 -video_size 640x480 -framerate 30 output.yuv    //create the output.yuv file
+./alsa_video_rec 			//record the video for 10 sec later it will play the video
+
+
+
+

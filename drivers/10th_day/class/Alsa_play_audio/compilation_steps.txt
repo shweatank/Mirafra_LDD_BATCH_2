@@ -1,0 +1,4 @@
+sudo apt-get install libasound2-dev
+Download your wav file from google and format it.
+gcc -o play_audio play_audio.c -lasound
+./play_audio

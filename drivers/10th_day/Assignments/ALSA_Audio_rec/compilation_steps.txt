@@ -1,0 +1,6 @@
+arecord -l
+ ls -ld .
+ alsamixer
+ arecord -f S16_LE -r 44100 -c 2 -d 5 test.wav    //record audio
+ aplay test.wav         //play audio
+

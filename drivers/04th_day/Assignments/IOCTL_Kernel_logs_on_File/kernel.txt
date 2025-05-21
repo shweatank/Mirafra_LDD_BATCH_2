@@ -1,0 +1,17 @@
+kernel_logs Module Loaded (Major: 511)
+Device opened
+Performed: 5 ^ 3 = 125
+Memory freed
+Device closed
+Device opened
+Performed: 5 % 3 = 2
+Memory freed
+Device closed
+Device opened
+Performed: 5 g 3 = 1
+Memory freed
+Device closed
+Device opened
+Performed: 1643767209 d 32767 = 0
+Memory freed
+Device closed
