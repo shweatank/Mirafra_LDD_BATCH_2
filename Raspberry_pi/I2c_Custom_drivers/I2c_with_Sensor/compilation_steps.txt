@@ -1,0 +1,13 @@
+dtc -@ -I dts -O dtb -o i2c_sensor.dtbo i2c_sensor.dts
+sudo cp i2c_sensor.dtbo /boot/overlays/
+sudo nano /boot/config.txt
+dtoverlay=i2c_sensor
+dtoverlay=i2c_sensor
+ls /sys/bus/i2c/devices/
+
+make
+sudo insmod max30102.ko
+sudo insmod max30102.ko
+dmesg | tail
+ls /sys/bus/i2c/drivers/max30102/
+ls /dev | grep max30102
