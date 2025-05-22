@@ -1,1 +1,0 @@
-/home/userm/Mirafra_LDD_BATCH_2/22_05_SOckets/project/net_comm_kernel.o
