@@ -1,0 +1,1 @@
+cmd_/home/userm/Mirafra_LDD_BATCH_2/22_05_SOckets/project/modules.order := {   echo /home/userm/Mirafra_LDD_BATCH_2/22_05_SOckets/project/net_comm_kernel.ko; :; } > /home/userm/Mirafra_LDD_BATCH_2/22_05_SOckets/project/modules.order

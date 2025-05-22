@@ -1,0 +1,1 @@
+cmd_/home/userm/Mirafra_LDD_BATCH_2/22_05_SOckets/project/Module.symvers :=  sed 's/ko$$/o/'  /home/userm/Mirafra_LDD_BATCH_2/22_05_SOckets/project/modules.order | scripts/mod/modpost -m -a    -o /home/userm/Mirafra_LDD_BATCH_2/22_05_SOckets/project/Module.symvers -e -i Module.symvers -T - 

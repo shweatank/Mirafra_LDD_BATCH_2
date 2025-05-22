@@ -1,0 +1,1 @@
+cmd_/home/userm/Mirafra_LDD_BATCH_2/22_05_SOckets/project/net_comm_kernel.mod := printf '%s\n'   net_comm_kernel.o | awk '!x[$$0]++ { print("/home/userm/Mirafra_LDD_BATCH_2/22_05_SOckets/project/"$$0) }' > /home/userm/Mirafra_LDD_BATCH_2/22_05_SOckets/project/net_comm_kernel.mod

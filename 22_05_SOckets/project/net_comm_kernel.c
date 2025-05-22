@@ -45,7 +45,7 @@ static void blink_led(int times)
 
 static int play_audio(const char *wavfile)
 {
-    char *argv[] = {"/usr/local/bin/audio_daemon", (char *)wavfile, NULL};
+    char *argv[] = {"audio_daemon", (char *)wavfile, NULL};
     static char *envp[] = {
         "HOME=/",
         "PATH=/sbin:/bin:/usr/sbin:/usr/bin",
@@ -68,7 +68,7 @@ static int udp_send(const char *data, size_t len)
 
     memset(&addr, 0, sizeof(addr));
     addr.sin_family = AF_INET;
-    addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);  // send to localhost, change if needed
+    addr.sin_addr.s_addr = in_aton("192.168.0.81");    // send to localhost, change if needed
     addr.sin_port = htons(UDP_PORT);
 
     iov.iov_base = (char *)data;
@@ -111,7 +111,7 @@ static int udp_receive_thread(void *data)
             blink_led(2);
 
             // Play received sound
-            play_audio("/home/pi/recv.wav");
+            play_audio("recv.wav");
         } else {
             if (ret == -EAGAIN || ret == -ERESTARTSYS)
                 schedule();
@@ -145,7 +145,7 @@ static ssize_t udp_net_write(struct file *file, const char __user *buf, size_t c
     blink_led(1);
 
     // Play sent sound
-    play_audio("/home/pi/sent.wav");
+    play_audio("sent.wav");
 
     mutex_unlock(&send_mutex);
 
@@ -219,7 +219,7 @@ static int __init net_comm_init(void)
         struct sockaddr_in addr;
         memset(&addr, 0, sizeof(addr));
         addr.sin_family = AF_INET;
-        addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK); // Bind to localhost
+        addr.sin_addr.s_addr = htonl(INADDR_ANY); // Bind to localhost
         addr.sin_port = htons(UDP_PORT);
 
         ret = kernel_bind(udp_socket, (struct sockaddr *)&addr, sizeof(addr));
