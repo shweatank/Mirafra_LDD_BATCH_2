@@ -1,0 +1,14 @@
+dtc -@ -I dts -O dtb -o udp_net.dtbo udp_net.dts
+sudo cp udp_net.dtbo /boot/overlays/
+sudo nano /boot/config.txt
+==> add this
+dtoverlay=udp_net
+
+sudo reboot
+
+sudo insmod udp_net.ko
+ls -l /dev/udp_net
+sudo mknod /dev/udp_net c <major> <minor>
+sudo chmod 666 /dev/udp_net
+echo "Hello from Pi" | sudo tee /dev/udp_net > /dev/null
+
