@@ -1,0 +1,13 @@
+make
+sudo insmod key_count_module.ko
+dmesg | tail
+sudo mknod /dev/key_count c <major_number> 0
+sudo chmod 666 /dev/key_count
+
+touch /tmp/key_audio_trigger
+
+gcc sound_daemon.c -o sound
+./key_sound_daemon ==> to play audio
+
+./user ==> to display how many keys and which keys pressed
+
