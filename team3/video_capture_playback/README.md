@@ -29,6 +29,8 @@ gcc play_mp4_video.c -o play_mp4_video \
     $(pkg-config --cflags --libs sdl2) \
     $(pkg-config --cflags --libs libavformat libavcodec libswscale libavutil) \
     -lm -pthread
+
+    
 //run the command
 ./play_mp4_video output.mp4
 
