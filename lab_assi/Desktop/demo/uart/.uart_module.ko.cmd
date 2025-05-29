@@ -1,0 +1,1 @@
+cmd_/home/user1/Desktop/demo/uart/uart_module.ko := ld -r -EL  -maarch64elf -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/user1/Desktop/demo/uart/uart_module.ko /home/user1/Desktop/demo/uart/uart_module.o /home/user1/Desktop/demo/uart/uart_module.mod.o;  true

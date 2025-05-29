@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/project/kernel_space/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/lab_assi/project/kernel_space/Module.symvers -T /home/mirafra/lab_assi/project/kernel_space/modules.order -i Module.symvers -e 

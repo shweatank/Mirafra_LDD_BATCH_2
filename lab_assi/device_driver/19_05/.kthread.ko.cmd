@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/19_05/kthread.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/lab_assi/device_driver/19_05/kthread.ko /home/mirafra/lab_assi/device_driver/19_05/kthread.o /home/mirafra/lab_assi/device_driver/19_05/kthread.mod.o

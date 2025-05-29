@@ -1,0 +1,1 @@
+cmd_/home/user1/Desktop/Akash/Kernel_space/led_uart_control.ko := ld -r -EL  -maarch64elf -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/user1/Desktop/Akash/Kernel_space/led_uart_control.ko /home/user1/Desktop/Akash/Kernel_space/led_uart_control.o /home/user1/Desktop/Akash/Kernel_space/led_uart_control.mod.o;  true

@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/21_05/mmap/mmap_code.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/lab_assi/device_driver/21_05/mmap/mmap_code.ko /home/mirafra/lab_assi/device_driver/21_05/mmap/mmap_code.o /home/mirafra/lab_assi/device_driver/21_05/mmap/mmap_code.mod.o

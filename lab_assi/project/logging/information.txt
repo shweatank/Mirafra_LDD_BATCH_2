@@ -1,0 +1,153 @@
+1.the Device Tree Source (DTS) sets up:
+
+    The hardware UART (UART1 in this case).
+
+    The pin configuration (TX/RX pins).
+
+    A custom platform device node with compatible = "rpi,uart-driver" that binds to your custom kernel driver.
+    
+2./dts-v1/;
+/plugin/;
+       -->Overlays are used to modify or extend the base device tree loaded at boot.
+       
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/interrupt-controller/irq.h>
+
+    Includes definitions for GPIO and IRQ flags (not strictly needed here, but useful if you add IRQs later).
+    
+3.&uart1 {
+    status = "okay";
+};
+
+    This enables the Raspberry Pi’s UART1 hardware block.
+
+    &uart1 refers to a label defined in the base device tree (bcm2711.dtsi for Pi 4).
+    
+4.&gpio {
+    uart1_pins: uart1_pins {
+        brcm,pins = <14 15>;            // GPIO14 (TXD1), GPIO15 (RXD1)
+        brcm,function = <4>;            // ALT0 = UART1 function
+        brcm,pull = <0>;                // No pull-up/down
+    };
+};
+This defines a pin configuration node.
+
+It sets GPIO14 and GPIO15 to function as UART TX and RX.
+
+ALT0 function mode is used for UART1 on these GPIOs.
+
+brcm,pull = <0> disables pull-up/down resistors.
+
+
+
+5.compatible = "brcm,bcm2835";-->Declares the top-level root node, which must match the SoC (BCM2835 family for all Raspberry Pi models).
+
+6.    fragment@0 {
+        target = <&uart1>;
+        __overlay__ {
+            pinctrl-names = "default";
+            pinctrl-0 = <&uart1_pins>;
+            status = "okay";
+        };
+    };
+
+
+Fragment 0 attaches the pin configuration to the UART1 peripheral.
+
+pinctrl-names = "default" tells the kernel which configuration to apply.
+
+pinctrl-0 = <&uart1_pins> connects the pins defined earlier.
+
+
+7.    fragment@1 {
+        target-path = "/";
+        __overlay__ {
+            rpi_uart: rpi-uart@0 {
+                compatible = "rpi,uart-driver";
+                reg = <0xfe201000 0x100>; // UART1 base address (Pi 4)
+                status = "okay";
+            };
+        };
+    };
+
+
+Fragment 1 adds a custom platform device node in the root of the device tree.
+
+rpi_uart is the node name and label.
+
+rpi-uart@0 is the device name and unit address (can be anything unique).
+
+compatible = "rpi,uart-driver" matches the of_match_table in your kernel module.
+
+reg = <0xfe201000 0x100> maps to the UART1 physical address and size. This matches what your driver expects in ioremap.
+
+This fragment is what causes the kernel to bind your platform driver to the UART hardware.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

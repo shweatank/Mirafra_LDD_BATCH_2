@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/19_05/kthread.mod := printf '%s\n'   kthread.o | awk '!x[$$0]++ { print("/home/mirafra/lab_assi/device_driver/19_05/"$$0) }' > /home/mirafra/lab_assi/device_driver/19_05/kthread.mod

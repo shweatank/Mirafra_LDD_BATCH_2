@@ -1,0 +1,1 @@
+cmd_/home/user1/Desktop/Akash/kernel/kernel/Module.symvers :=  sed 's/ko$$/o/'  /home/user1/Desktop/Akash/kernel/kernel/modules.order | scripts/mod/modpost -m -a    -o /home/user1/Desktop/Akash/kernel/kernel/Module.symvers -e -i Module.symvers -T - 

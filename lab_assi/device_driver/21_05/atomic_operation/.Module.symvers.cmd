@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/21_05/atomic_operation/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/lab_assi/device_driver/21_05/atomic_operation/Module.symvers -T /home/mirafra/lab_assi/device_driver/21_05/atomic_operation/modules.order -i Module.symvers -e 

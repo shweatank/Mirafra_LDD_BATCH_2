@@ -1,0 +1,1 @@
+cmd_/home/user1/Desktop/Akash/i2c_uart/Module.symvers :=  sed 's/ko$$/o/'  /home/user1/Desktop/Akash/i2c_uart/modules.order | scripts/mod/modpost -m -a    -o /home/user1/Desktop/Akash/i2c_uart/Module.symvers -e -i Module.symvers -T - 

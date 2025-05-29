@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/project/kernel_space/client_2.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/lab_assi/project/kernel_space/client_2.ko /home/mirafra/lab_assi/project/kernel_space/client_2.o /home/mirafra/lab_assi/project/kernel_space/client_2.mod.o

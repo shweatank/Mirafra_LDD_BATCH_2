@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/device_driver/21_05/atomic_operation/atomic.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/lab_assi/device_driver/21_05/atomic_operation/atomic.ko /home/mirafra/lab_assi/device_driver/21_05/atomic_operation/atomic.o /home/mirafra/lab_assi/device_driver/21_05/atomic_operation/atomic.mod.o

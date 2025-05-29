@@ -1,0 +1,42 @@
+/dts-v1/;
+/plugin/;   //overlay while booting changes will be reflected
+
+#include <dt-bindings/gpio/gpio.h>
+#include <dt-bindings/interrupt-controller/irq.h>  //header files related to gpio and flages
+
+&uart1 {
+    status = "okay";   //enable the uart1
+};
+
+&gpio {
+    uart1_pins: uart1_pins {
+        brcm,pins = <14 15>;            // GPIO14 (TXD1), GPIO15 (RXD1)   //gpio pin configuration corresponding to rspi
+        brcm,function = <4>;            // ALT0 = UART1 function
+        brcm,pull = <0>;                // No pull-up/down
+    };
+};
+
+/ {
+    compatible = "brcm,bcm2835";    //company and proccesor family
+
+    fragment@0 {              //Fragment 0 attaches the pin configuration to the UART1 peripheral.
+        target = <&uart1>;
+        __overlay__ {
+            pinctrl-names = "default";   //default configuration and aasign pin
+            pinctrl-0 = <&uart1_pins>;    //assign the pin
+            status = "okay";    //enable
+        };
+    };
+
+    fragment@1 {       //Fragment 1 adds a custom platform device node in the root of the device tree.
+        target-path = "/";
+        __overlay__ {
+            rpi_uart: rpi-uart@0 {      //name of node and address
+                compatible = "rpi,uart-driver";      //matches the of_match_table in your kernel module
+                reg = <0xfe201000 0x100>; // UART1 base on Pi 4     //address and size
+                status = "okay";     //enable
+            };
+        };
+    };
+};
+

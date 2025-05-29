@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/lab_assi/project/kernel_space/modules.order := {   echo /home/mirafra/lab_assi/project/kernel_space/server.o;   echo /home/mirafra/lab_assi/project/kernel_space/client_2.o; :; } > /home/mirafra/lab_assi/project/kernel_space/modules.order
