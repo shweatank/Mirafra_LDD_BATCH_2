@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Documents/Akash/Mirafra_LDD_BATCH_2/Project/cos_vid_driver/kernel/virtual_cam.mod := printf '%s\n'   virtual_cam.o | awk '!x[$$0]++ { print("/home/mirafra/Documents/Akash/Mirafra_LDD_BATCH_2/Project/cos_vid_driver/kernel/"$$0) }' > /home/mirafra/Documents/Akash/Mirafra_LDD_BATCH_2/Project/cos_vid_driver/kernel/virtual_cam.mod

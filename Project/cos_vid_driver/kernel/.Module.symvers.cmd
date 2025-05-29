@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Documents/Akash/Mirafra_LDD_BATCH_2/Project/cos_vid_driver/kernel/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/Documents/Akash/Mirafra_LDD_BATCH_2/Project/cos_vid_driver/kernel/Module.symvers -T /home/mirafra/Documents/Akash/Mirafra_LDD_BATCH_2/Project/cos_vid_driver/kernel/modules.order -i Module.symvers -e 

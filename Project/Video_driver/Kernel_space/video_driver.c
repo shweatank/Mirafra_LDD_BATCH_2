@@ -106,5 +106,5 @@ module_init(video_driver_init);
 module_exit(video_driver_exit);
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Your Name");
+MODULE_AUTHOR("Akash");
 MODULE_DESCRIPTION("Simple video driver for command-based control");
