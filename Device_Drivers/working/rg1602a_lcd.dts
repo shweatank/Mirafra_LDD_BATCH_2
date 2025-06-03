@@ -1,0 +1,20 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2835";
+
+    fragment@0 {
+        target = <&i2c1>; // Change if using i2c0
+        __overlay__ {
+            #address-cells = <1>;
+            #size-cells = <0>;
+
+            rg1602a_lcd: rg1602a_lcd@27 {
+                compatible = "mohan,rg1602a-lcd";
+                reg = <0x27>;
+            };
+        };
+    };
+};
+
