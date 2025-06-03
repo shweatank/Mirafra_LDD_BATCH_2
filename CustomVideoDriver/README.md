@@ -15,6 +15,7 @@ struct v4l2_device {
 };
 
 
+
 struct video_device:
 
 Defined in include/media/v4l2-dev.h
