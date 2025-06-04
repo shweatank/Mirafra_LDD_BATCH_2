@@ -39,6 +39,8 @@ int main() {
     }
 
     // Set socket options
+    // setsockopt() to configure socket options at various protocol levels (like IP, TCP, or the socket itself).
+    // Without this, if a server closes and restarts quickly, you might get an "address already in use" error.
     int opt = 1;
     if (setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt))) {
 	perror("setsockopt");
@@ -49,6 +51,8 @@ int main() {
 
     // Configure server address
     server_addr.sin_family = AF_INET;
+    //INADDR_ANY is a constant used to indicate that a server should accept connections on any available network interface.
+    // we can use specific SERVER IP Address also.. like "192.168.0.55" 
     server_addr.sin_addr.s_addr = INADDR_ANY;
     server_addr.sin_port = htons(PORT);
 

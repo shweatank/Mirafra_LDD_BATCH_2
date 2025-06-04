@@ -28,6 +28,7 @@ int main() {
     // Configure server address
     server_addr.sin_family = AF_INET;
     server_addr.sin_port = htons(PORT);
+    //It converts an IP address in string form (like "192.168.1.1") into its binary form (used in socket structures like sockaddr_in).
     if (inet_pton(AF_INET, SERVER_IP, &server_addr.sin_addr) <= 0) {
 	perror("invalid address");
 	close(sock);

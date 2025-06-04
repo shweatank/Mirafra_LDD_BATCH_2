@@ -141,7 +141,9 @@ static int lcd_i2c_probe(struct i2c_client *client, const struct i2c_device_id *
     lcd_init_display();    // Initialize LCD
 
     /* Allocate char device numbers */
-    ret = alloc_chrdev_region(&dev_num, 0, 1, DEVICE_NAME);
+    ret = alloc_chrdev_region(&dev_num, 0, 1, DEVICE_NAME); // dynamically allocated
+    // for statically allocate chrdev : we only want to give unused Major and Minor number
+    // register_chrdev_region(dev, 1, DEVICE_NAME);
     if (ret < 0) {
         pr_err("Failed to allocate char device region\n");
         return ret;
