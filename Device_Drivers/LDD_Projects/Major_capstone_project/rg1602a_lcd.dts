@@ -11,7 +11,7 @@
             #size-cells = <0>;
 
             rg1602a_lcd: rg1602a_lcd@27 {
-                compatible = "mohan,rg1602a-lcd";
+                compatible = "vishnu,rg1602a-lcd";
                 reg = <0x27>;
             };
         };
