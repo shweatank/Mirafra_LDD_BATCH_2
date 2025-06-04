@@ -150,7 +150,7 @@ static int lcd_i2c_probe(struct i2c_client *client, const struct i2c_device_id *
 
     /* Display default messages */
     lcd_message("GOOD AFTERNOON!", LCD_LINE_1);
-    lcd_message("HELLO MOHAN", LCD_LINE_2);
+    lcd_message("HELLO VISHNU", LCD_LINE_2);
 
     pr_info("LCD device registered with major %d minor %d\n",
             MAJOR(dev_num), MINOR(dev_num));
@@ -180,7 +180,7 @@ static const struct i2c_device_id lcd_id[] = {
 MODULE_DEVICE_TABLE(i2c, lcd_id);
 
 static const struct of_device_id lcd_of_match[] = {
-    { .compatible = "mohan,rg1602a-lcd" },
+    { .compatible = "vishnu,rg1602a-lcd" },
     { }
 };
 MODULE_DEVICE_TABLE(of, lcd_of_match);
@@ -198,6 +198,6 @@ static struct i2c_driver lcd_driver = {
 module_i2c_driver(lcd_driver);
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Kuruba Mohan");
+MODULE_AUTHOR("Vishnu K");
 MODULE_DESCRIPTION("I2C LCD Driver using probe/remove for RG1602A 16x2 display with ioctl support");
 
