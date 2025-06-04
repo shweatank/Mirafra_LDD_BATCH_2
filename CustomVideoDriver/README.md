@@ -47,3 +47,16 @@ struct video_device {
     struct media_entity entity;              // Media controller entity
 };
 
+1. Install FFmpeg (if not installed)
+sudo apt update
+sudo apt install ffmpeg
+
+2. Merge all YUYV frames into one raw file
+cat frame_*.yuv > all_frames.yuv
+
+3. Convert raw YUYV to MP4 using FFmpeg
+
+    ffmpeg -f rawvideo -pix_fmt yuyv422 -s 640x480 -r 10 -i all_frames.yuv -c:v libx264 -pix_fmt yuv420p output.mp4
+
+4. vlc output.mp4
+
