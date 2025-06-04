@@ -20,6 +20,12 @@
 // LCD I2C address
 #define I2C_LCD_ADDR     0x27
 #define LCD_WIDTH        16  // 16 characters per line
+#define LCD_INITIALIZE   	0x33
+#define LCD_SET_4_BIT           0x32
+#define LCD_SET_5x7_4_BIT 	0x28
+#define LCD_DISPLAY_CONTROL 	0x0C
+#define LCD_ENTRY_MODE		0x06
+#define LCD_CLEAR_DISPLAY	0x01
 
 // LCD command/data modes
 #define LCD_CMD          0  // Writing a command
@@ -73,12 +79,12 @@ static void lcd_write(uint8_t bits, uint8_t mode)
 */
 static void lcd_init_display(void)
 {
-    lcd_write(0x33, LCD_CMD); // Initialize
-    lcd_write(0x32, LCD_CMD); // Set to 4-bit mode
-    lcd_write(0x28, LCD_CMD); // 2 line, 5x7 matrix
-    lcd_write(0x0C, LCD_CMD); // Display on, cursor off
-    lcd_write(0x06, LCD_CMD); // Increment cursor, entry mode
-    lcd_write(0x01, LCD_CMD); // Clear display
+    lcd_write(LCD_INITIALIZE, LCD_CMD); // Initialize : by default it assumes 8-bit mode
+    lcd_write(LCD_SET_4_BIT, LCD_CMD); // Set to 4-bit mode from 8-bit; 8-bit is default when power ON
+    lcd_write(LCD_SET_5x7_4_BIT, LCD_CMD); // 2 line, 5x7 matrix //for 8-bit mode 0x38
+    lcd_write(LCD_DISPLAY_CONTROL, LCD_CMD); // Display on, cursor off
+    lcd_write(LCD_ENTRY_MODE, LCD_CMD); // Increment cursor, entry mode
+    lcd_write(LCD_CLEAR_DISPLAY, LCD_CMD); // Clear display
     msleep(5);
     pr_info("RG1602A LCD Initialized\n");
 }
@@ -186,7 +192,7 @@ static void lcd_i2c_remove(struct i2c_client *client)
 {
     pr_info("Removing RG1602A LCD I2C client\n");
 
-    lcd_write(0x01, LCD_CMD); // Clear display
+    lcd_write(LCD_CLEAR_DISPLAY, LCD_CMD); // Clear display
 
     // Destroy device and cleanup
     device_destroy(lcd_class, dev_num);
@@ -206,7 +212,7 @@ MODULE_DEVICE_TABLE(i2c, lcd_id);
 
 // Device tree compatible match table
 static const struct of_device_id lcd_of_match[] = {
-    { .compatible = "mohan,rg1602a-lcd" },
+    { .compatible = "team-5,rg1602a-lcd" },
     { }
 };
 MODULE_DEVICE_TABLE(of, lcd_of_match);
