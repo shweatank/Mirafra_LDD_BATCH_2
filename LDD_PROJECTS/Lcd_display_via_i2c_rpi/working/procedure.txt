@@ -1,0 +1,16 @@
+//
+sudo raspi-config ==> enable i2c
+i2cdetect -y 1 ==> to check I2C device at address particular 
+dtc -@ -I dts -O dtb -o rg1602a_lcd.dtbo rg1602a_lcd.dts
+sudo cp rg1602a_lcd.dtbo /boot/overlays/
+sudo nano /boot/config.txt
+// add dtoverlay=rg1602a_lcd
+
+sudo reboot
+
+make clean
+make
+
+sudo insmod my_driver.ko
+
+
