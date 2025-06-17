@@ -16,5 +16,9 @@ int main() {
       delete_last(&head, &tail);
      print_list(head);
 
+	//Using function pointer to call reverse double linked list function
+	int (*reverse_ptr)(dlist **) = reverse_double_linkedlist;  //creating the funptr and point to the function
+	reverse_ptr(&head);  //calling the function pointer
+	print_list(head);
     return 0;
 }
