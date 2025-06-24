@@ -1,0 +1,8 @@
+make
+sudo modprobe i2c-gpio
+sudo insmod mmio_i2c_driver.ko
+sudo insmod lcd_client_driver.ko
+
+sudo rmmod lcd_client_driver 
+sudo rmmod mmio_i2c_driver
+make clean
