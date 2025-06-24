@@ -1,0 +1,15 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2711";
+
+    fragment@0 {
+        target-path = "/soc/serial@7e201000";
+        __overlay__ {
+            dmas = <&dma 5>, <&dma 6>;  // RX: channel 5, TX: channel 6 (choose available ones)
+            dma-names = "rx", "tx";
+        };
+    };
+};
+
