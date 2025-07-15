@@ -283,6 +283,24 @@ int Insert_atfirst(slist **head, int ndata)
     return success;
 }
 
+slist *recursion_revrse(slist *current, slist *prev)
+{
+    if(current == NULL)
+    {
+        return prev;
+    }
+    slist *next = current->link;
+    current->link = prev;
+    recursion_revrse(next, current);
+}
+int reverse_sll_recursion(slist **head)
+{
+    if(*head ==NULL)
+    {
+        return failure;
+    }
+    *head = recursion_revrse(*head, NULL);
+}
 
 int main()
 {
@@ -375,14 +393,18 @@ int main()
                 
             }
             break;
-            
             case 11:
+            if(reverse_sll_recursion(&head) != -1)
+            {
+            printf("The linked list is reversed through recursion method\n");
+            }
+            case 12:
             if(sl_sort(&head) != -1)
             {
                 printf("The linked list is sorted\n");
             }
             break;
-            case 12:
+            case 13:
             if(remove_duplicates(&head) != -1)
             {
                 printf("The linked list duplicates are removed\n");
