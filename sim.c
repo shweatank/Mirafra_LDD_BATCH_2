@@ -1,0 +1,18 @@
+#include<stdio.h>
+#include<stdlib.h>
+/*int main()
+{
+		printf("Hello world\n");
+		return 0;
+}*/
+int fun();
+void _start()
+{
+		int x=fun();
+		//exit(x);
+}
+int fun()
+{
+		printf("Hello world\n");
+		return 0;
+}
