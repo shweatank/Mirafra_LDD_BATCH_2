@@ -1,0 +1,200 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node
+{
+    int data;
+    struct node * link;
+};
+
+struct node * InsertNodes(struct node *head,int n)
+{
+    int i,count=0;
+    struct node *temp,*newnode;
+    for(i=1;i<=n;i++)
+    {
+        newnode = (struct node *)malloc(sizeof(struct node));
+        printf("Enter node %d:",i);
+        scanf("%d",&newnode->data);
+        newnode->link = NULL;
+        count++;
+        
+        if(head == NULL)
+        {
+            head = newnode;
+            temp = newnode;
+        }
+        else
+        {
+            temp->link = newnode;
+            temp = newnode;
+        }
+        
+        
+    }
+     printf("\nCount = %d\n",count);
+    
+    return head;
+    
+}
+
+void PrintData(struct node *head)
+{
+   
+    struct node *temp;
+    
+    temp = head;
+        while(temp!=NULL)
+        {
+            printf("%d->",temp->data);
+            temp = temp->link;
+        }
+        printf("NULL\n");
+        
+        
+        //return temp;
+}
+
+struct node * Insertatbeg(struct node *head)
+{
+    struct node *newnode;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    printf("Enter data to add at beg:");
+    scanf("%d",&newnode->data);
+    newnode->link = head;
+    
+    head = newnode;
+    
+    return head;
+}
+
+struct node * InsertatEnd(struct node *head)
+{
+    struct node *newnode,*temp;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    printf("Enter data to add at end:");
+    scanf("%d",&newnode->data);
+    newnode->link = NULL;
+    temp = head;
+ 
+    while(temp->link!=NULL)
+    {
+        temp = temp->link;
+    }
+    
+    temp->link = newnode;
+    return head;
+}
+struct node *Insertatspecificnode(struct node *head,int pos)
+{
+    struct node *temp,*newnode;
+    int i=1;
+    newnode = (struct node *)malloc(sizeof(struct node));
+    if(pos<0)
+    {
+        printf("Invalid");
+    }
+    else
+    {
+        temp = head;
+        while(i<pos)
+        {
+            temp= temp->link;
+            i++;
+        }
+        printf("Enter data to add at specific position:");
+        scanf("%d",&newnode->data);
+        newnode->link = temp->link;
+        temp->link= newnode;
+        
+    }
+    return head;
+}
+struct node * DeleteatBeg(struct node *head)
+{
+    struct node *temp;
+    temp = head;
+    head = head->link;
+    free(temp);
+    
+    return head;
+}
+struct node * DeleteatEnd(struct node *head)
+{
+    struct node *temp,*prev;
+    temp = head;
+    if(head == NULL)
+    {
+        printf("List is Empty");
+        
+    }
+    else
+    {
+        while(temp->link!=NULL)
+        {
+            prev = temp;
+            temp = temp->link;
+        }
+        prev->link = NULL;
+    }
+    free(temp);
+    return head;
+}
+
+
+struct node * DeleteatspecificPosition(struct node *head,int pos)
+{
+    int i=1;
+    struct node *temp,*next;
+    temp = head;
+    if(i<pos-1)
+    {
+        temp = temp->link;
+        i++;
+    }
+    next = temp->link;
+    temp->link = next->link;
+    free(next);
+    
+    return head;
+    
+}
+struct node *Reverse(struct node *head)
+{
+    struct node *current,*prev,*next;
+    current = next = head;
+    prev = 0;
+    while(next!=0)
+    {
+        next = next->link;
+        current ->link = prev;
+        prev = current;
+        current = next;
+    }
+    return prev;
+}
+int main()
+{
+    struct node *head;
+     head = NULL;
+     head = InsertNodes(head,3);
+     PrintData(head);
+     head =Insertatbeg(head);
+     PrintData(head);
+     head = InsertatEnd(head);
+     PrintData(head);
+     head = Insertatspecificnode(head,2);
+     PrintData(head);
+     printf("Node deleted at begining:");
+     head = DeleteatBeg(head);
+     PrintData(head);
+     printf("Node deleted at End:");
+     head = DeleteatEnd(head);
+     PrintData(head);
+
+    head = DeleteatspecificPosition(head,3);
+    PrintData(head);
+    
+    Reverse(head);
+    PrintData(head);
+}
