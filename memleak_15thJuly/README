@@ -1,0 +1,23 @@
+ kmemleak_test: loading out-of-tree module taints kernel.
+ Allocated memory at ffff888004ce3c00
+ Exiting kmemleak test module (leak not freed)
+~ # echo scan > /sys/kernel/debug/kmemleak
+~ # cat /sys/kernel/debug/kmemleak
+unreferenced object 0xffff888004ce3c00 (size 1024): // 1024 byte memory block was allocated and is no longer referenced — a leak.
+  comm "insmod", pid 56, jiffies 4294673451 //The leak occurred during execution of the insmod command
+  hex dump (first 32 bytes):
+    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+    00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+  backtrace (crc 0):
+    __kmalloc_cache_noprof+0x284/0x320
+    0xffffffffa000102a  //  <-- `kmemleak_test_init()` return address
+    do_one_initcall+0x55/0x220
+    do_init_module+0x5b/0x230
+    __do_sys_init_module+0x150/0x180
+    do_syscall_64+0xa4/0x260
+    entry_SYSCALL_64_after_hwframe+0x77/0x7f
+~ # echo clear > /sys/kernel/debug/kmemleak
+~ # echo scan > /sys/kernel/debug/kmemleak
+~ # cat /sys/kernel/debug/kmemleak
+ 
+
