@@ -1,0 +1,44 @@
+🧩 Step 1: Create a Binary File with Random Machine Code
+Let’s use a known x86-64 instruction sequence:
+
+asm
+
+mov eax, 1
+int 0x80
+ret
+This compiles to:
+
+b8 01 00 00 00 cd 80 c3
+
+Let’s create this binary:
+
+echo -ne '\xb8\x01\x00\x00\x00\xcd\x80\xc3' > random.bin
+You now have an 8-byte binary file.
+
+⚙️ Step 2: Convert to ELF Format
+Use objcopy to wrap it as an ELF object:
+
+
+objcopy -I binary -O elf64-x86-64 -B i386 random.bin random.o
+🔍Step 3: Disassemble with objdump
+
+objdump -d -M intel random.o
+Expected output:
+
+asm
+
+random.o:     file format elf64-x86-64
+
+Disassembly of section .data:
+
+0000000000000000 <.data>:
+   0:   b8 01 00 00 00          mov    eax, 0x1
+   5:   cd 80                   int    0x80
+   7:   c3                      ret
+
+
+
+cr2 register holds faulting virtual address 000 means NULL
+RIP instruction pointer which instruction causes derefercing
+CODE means code can be converted from binary to assembly using objdump
+objdump -D dereference.o
