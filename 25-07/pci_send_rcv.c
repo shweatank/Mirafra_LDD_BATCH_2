@@ -193,6 +193,6 @@ static struct pci_driver pci_drv = {
 module_pci_driver(pci_drv);
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Teja");
+MODULE_AUTHOR("Keerthi");
 MODULE_DESCRIPTION("Custom PCI Driver with Valid Ethernet Tx Frame");
 
