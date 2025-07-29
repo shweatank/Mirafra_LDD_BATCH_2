@@ -100,5 +100,5 @@ module_init(dummy_rtc_init);
 module_exit(dummy_rtc_exit);
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Arya");
+MODULE_AUTHOR("Kavya");
 MODULE_DESCRIPTION("Dummy RTC platform driver for x86");
