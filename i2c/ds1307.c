@@ -91,6 +91,6 @@ static struct i2c_driver ds1307_driver = {
 
 module_i2c_driver(ds1307_driver);
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Your Name");
+MODULE_AUTHOR("TEJA");
 MODULE_DESCRIPTION("DS1307 I2C RTC Driver");
 
