@@ -1,4 +1,4 @@
-#include <linux/module.h>
+/*#include <linux/module.h>
 #include <linux/init.h>
 #include <linux/kernel.h>
 
@@ -28,3 +28,29 @@ module_exit(crash_trigger_exit);
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Kavya");
 MODULE_DESCRIPTION("Kernel panic test module (division by zero)");
+*/
+
+// panic_module.c
+#include <linux/module.h>
+#include <linux/kernel.h>
+
+static int __init panic_init(void)
+{
+    printk(KERN_ALERT "Triggering kernel panic now!\n");
+
+    panic("Manual kernel panic triggered for testing.\n");
+
+    return 0; // Won’t reach here
+}
+
+static void __exit panic_exit(void)
+{
+    printk(KERN_INFO "Panic module removed.\n");
+}
+
+module_init(panic_init);
+module_exit(panic_exit);
+
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Kavya");
+MODULE_DESCRIPTION("Kernel module to manually trigger panic");
