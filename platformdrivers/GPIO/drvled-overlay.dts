@@ -1,0 +1,22 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2711";
+
+    fragment@0 {
+        target-path = "/";
+        __overlay__ {
+            drvleds {
+                compatible = "led1,drvled";
+                status = "okay";
+
+                led@0 {
+                    label = "pi4-green-led";
+                    led-gpios = <&gpio 17 GPIO_ACTIVE_HIGH>; /* GPIO17 (Pin 11) */
+                };
+            };
+        };
+    };
+};
+
