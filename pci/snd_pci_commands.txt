@@ -1,0 +1,7 @@
+Sender side:
+1. lspci | grep -i ethernet // it shows like this   00:19.0 Ethernet controller: Intel Corporation Ethernet Connection I219-LM (rev 11)
+2. Find the driver in use: lspci -k -s 00:19.0 // it shows Kernel driver in use: e1000e
+3. unbind the device : echo -n "0000:00:19.0" | sudo tee /sys/bus/pci/drivers/e1000e/unbind 
+4. load the module
+5. then bind it again : echo -n "0000:00:19.0" | sudo tee /sys/bus/pci/drivers/e1000e/bind
+6.  see the msg is recived in the reciver side or not.

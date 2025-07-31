@@ -1,0 +1,2 @@
+in receiver side:
+sudo tcpdump -i eth0 ether src a4:4c:c8:69:24:39  -X // in this make a chanegs according to your system.
