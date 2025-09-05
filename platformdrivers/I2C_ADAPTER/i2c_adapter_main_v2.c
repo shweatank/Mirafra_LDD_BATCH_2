@@ -9,20 +9,19 @@
 #include <linux/of_device.h>
 
 
-
-#define RPI_I2C_C		0x0
-#define RPI_I2C_S		0x4
+#define RPI_I2C_C		        0x0
+#define RPI_I2C_S		        0x4
 #define RPI_I2C_DLEN	        0x8
-#define RPI_I2C_A		0xc
-#define RPI_I2C_FIFO    	0x10
-#define RPI_I2C_DIV		0x14
-#define RPI_I2C_DEL		0x18
+#define RPI_I2C_A	        	0xc
+#define RPI_I2C_FIFO            0x10
+#define RPI_I2C_DIV		        0x14
+#define RPI_I2C_DEL		        0x18
 
 #define RPI_I2C_CLKT	        0x1c
 
 
-#define RPI_I2C_FEDL_SHIFT	16
-#define RPI_I2C_REDL_SHIFT	0
+#define RPI_I2C_FEDL_SHIFT	    16
+#define RPI_I2C_REDL_SHIFT	    0
 
 #define I2C_CDIV_MIN	        0x0002
 #define I2C_CDIV_MAX	        0xFFFE
@@ -58,11 +57,6 @@ static int clk_i2c_calc_divider(unsigned long rate,unsigned long parent_rate)
 {
 	u32 divider = DIV_ROUND_UP(parent_rate, rate);
 
-	/*
-	 * Per the datasheet, the register is always interpreted as an even
-	 * number, by rounding down. In other words, the LSB is ignored. So,
-	 * if the LSB is set, increment the divider to avoid any issue.
-	 */
 	if (divider & 1)
 		divider++;
 	if ((divider < I2C_CDIV_MIN) ||
