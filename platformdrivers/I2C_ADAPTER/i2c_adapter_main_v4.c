@@ -11,14 +11,14 @@
 
 
 #define RPI_I2C_C		0x0
-#define RPI_I2C_S       	0x4
-#define RPI_I2C_DLEN	        0x8
+#define RPI_I2C_S       0x4
+#define RPI_I2C_DLEN	0x8
 #define RPI_I2C_A		0xc
-#define RPI_I2C_FIFO    	0x10
+#define RPI_I2C_FIFO    0x10
 #define RPI_I2C_DIV		0x14
 #define RPI_I2C_DEL		0x18
 
-#define RPI_I2C_CLKT	        0x1c
+#define RPI_I2C_CLKT	0x1c
 
 
 
@@ -46,8 +46,8 @@
 #define RPI_I2C_FEDL_SHIFT	16
 #define RPI_I2C_REDL_SHIFT	0
 
-#define I2C_CDIV_MIN	        0x0002
-#define I2C_CDIV_MAX	        0xFFFE
+#define I2C_CDIV_MIN	    0x0002
+#define I2C_CDIV_MAX	    0xFFFE
 
 
 
