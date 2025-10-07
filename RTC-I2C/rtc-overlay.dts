@@ -1,0 +1,20 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2835";
+
+    fragment@0 {
+        target = <&i2c1>;   // i2c1 base address
+        __overlay__ {
+            #address-cells = <1>;
+            #size-cells = <0>;
+
+            rtc@68 {
+                compatible = "maxim,ds3231";   // Or "maxim,ds1307"
+                reg = <0x68>;                  // I²C address
+                status = "okay";
+            };
+        };
+    };
+};
